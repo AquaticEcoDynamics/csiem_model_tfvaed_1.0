@@ -1,0 +1,98 @@
+! Intakes and Discharges for Cockburn Sound BGC Water Quality model for 20130101 to 20140101
+
+!!!! Outfalls ------------------------------------------------------------------------------
+
+! PSDP Direct insertion
+bc == QC, 115.7532951,-32.2000301   , ../bc_dbase/discharges/PSDP1_20130101_20140101_wq.csv
+  bc header == Date,Q,Salt,Temp,Zeroes,Ones,DO, Ones,Ones,Ones,Ones,   Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones
+!              Date,Q,Salt,Temp,TRACE1,TSS, Oxy, Amm, Nit, FRP, FRP_ads,DOC, POC, DON, PON, DOP, POP, GRN, BGA,CRYPT,MDIAT,DINO
+  bc scale ==     1.0,1.00,1.00,1.0000,0.01,1.00,0.01,0.01,0.01,0.01,   0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01, 0.01
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! Ti West Discharge
+bc == QC, 115.756185,-32.232613   , ../bc_dbase/discharges/TiWest_20130101_20140101_wq.csv
+  bc header == Date,Q,Salt,Temp,Zeroes,Ones,DO, Ones,Ones,Ones,Ones,   Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones
+!              Date,Q,Salt,Temp,TRACE1,TSS, Oxy, Amm, Nit, FRP, FRP_ads,DOC, POC, DON, PON, DOP, POP, GRN, BGA,CRYPT,MDIAT,DINO
+  bc scale ==     1.0,1.00,1.00,1.0000,0.01,1.00,0.01,0.01,0.01,0.01,   0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01, 0.01
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! BP Discharge
+bc == QC, 115.760187,-32.217654   , ../bc_dbase/discharges/BP_20130101_20140101_wq.csv
+  bc header == Date,Q,Salt,Temp,Zeroes,Ones,DO, Ones,Ones,Ones,Ones,   Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones
+!              Date,Q,Salt,Temp,TRACE1,TSS, Oxy, Amm, Nit, FRP, FRP_ads,DOC, POC, DON, PON, DOP, POP, GRN, BGA,CRYPT,MDIAT,DINO
+  bc scale ==     1.0,1.00,1.00,1.0000,0.01,1.00,0.01,0.01,0.01,0.01,   0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01, 0.01
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! KPS - Stage A+B Discharge
+bc == QC, 115.772514,-32.197657   , ../bc_dbase/discharges/KPS_A_B_20130101_20140101_wq.csv
+  bc header == Date,Q,Salt,Temp,Zeroes,Ones,DO, Ones,Ones,Ones,Ones,   Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones
+!              Date,Q,Salt,Temp,TRACE1,TSS, Oxy, Amm, Nit, FRP, FRP_ads,DOC, POC, DON, PON, DOP, POP, GRN, BGA,CRYPT,MDIAT,DINO
+  bc scale ==     1.0,1.00,1.00,1.0000,0.01,1.00,0.01,0.01,0.01,0.01,   0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01, 0.01
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! KPS - Stage C Discharge
+bc == QC, 115.772244,-32.198198   , ../bc_dbase/discharges/KPS_C_CPS_20130101_20140101_wq.csv
+  bc header == Date,Q,Salt,Temp,Zeroes,Ones,DO, Ones,Ones,Ones,Ones,   Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones
+!              Date,Q,Salt,Temp,TRACE1,TSS, Oxy, Amm, Nit, FRP, FRP_ads,DOC, POC, DON, PON, DOP, POP, GRN, BGA,CRYPT,MDIAT,DINO
+  bc scale ==     1.0,1.00,1.00,1.0000,0.01,1.00,0.01,0.01,0.01,0.01,   0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01, 0.01
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! SDOOL
+bc == QC, 115.6563294,-32.28971038   , ../bc_dbase/discharges/SDOOL_20130101_20140101_wq.csv
+  bc header == Date,Q,Salt,Temp,Zeroes,Ones,DO, Ones,Ones,Ones,Ones,   Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones,Ones
+!              Date,Q,Salt,Temp,TRACE1,TSS, Oxy, Amm, Nit, FRP, FRP_ads,DOC, POC, DON, PON, DOP, POP, GRN, BGA,CRYPT,MDIAT,DINO
+  bc scale ==     1.0,1.00,1.00,1.0000,26.4,1.00,0.71,0.01,0.10,0.01,   0.01,0.01,0.70,0.01,0.09,0.01,0.01,0.01,0.01,0.01, 0.01
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+
+!!!! Intakes ----------------------------------------------------------------------------------
+
+! PDSP Intake
+bc == QC,115.770454,-32.200828, ../bc_dbase/intakes/PSDP1_20130101_20140101_wq.csv
+  bc header == Date, Q
+  bc scale == -1.636
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! BP Intake
+bc == QC, 115.755096,-32.227487   , ../bc_dbase/intakes/CSound_Apr2013_PRP_BP_Intake.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! Verve Intake South
+bc == QC, 115.770804,-32.198633   , ../bc_dbase/intakes/CSound_Apr2013_PRP_VerveSouth_Intake.csv 
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! Verve Intake North
+bc == QC, 115.771757,-32.196188   , ../bc_dbase/intakes/CSound_Apr2013_PRP_VerveNorth_Intake.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc

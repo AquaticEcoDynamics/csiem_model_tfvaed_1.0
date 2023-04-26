@@ -1,0 +1,77 @@
+! Intakes and Discharges for Cockburn Sound
+!
+
+! Ti West Discharge
+bc == QC, 115.756185,-32.232613   , ../bc_dbase/discharges/TiWest20150101_20160101.csv
+  bc header == Date,Q,Salt,Temp,dummy,dummy,dummy,Trace_1
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! BP Discharge
+bc == QC, 115.760187,-32.217654   , ../bc_dbase/discharges/BP20150101_20160101.csv
+  bc header == Date,Q,Salt,Temp,dummy,dummy,dummy,Trace_1
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! KPS - Stage A+B Discharge
+bc == QC, 115.772514,-32.197657   , ../bc_dbase/discharges/KPS_A_B20150101_20160101.csv
+  bc header == Date,Q,Salt,Temp,dummy,dummy,dummy,Trace_1
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! KPS - Stage C Discharge
+bc == QC, 115.772244,-32.198198   , ../bc_dbase/discharges/KPS_C_CPS20150101_20160101.csv
+  bc header == Date,Q,Salt,Temp,dummy,dummy,dummy,Trace_1
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! PSDP Direct insertion
+bc == QC, 115.7532951,-32.2000301   , ../bc_dbase/discharges/PSDP120150101_20160101.csv
+  bc header == Date,Q,Salt,Temp,dummy,dummy,dummy,Trace_1
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+! SEPIA Direct insertion
+bc == QC, 115.656329448279,-32.2897103794228   , ../bc_dbase/discharges/SDOOL20150101_20160101.csv
+  bc header == Date,Q,Salt,Temp,dummy,dummy,dummy,Trace_1
+  vertical coordinate type == depth
+  vertical distribution == ../bc_dbase/discharges/DischargeDepth_001.csv
+end bc
+
+
+!BP Intake
+bc == QC, 115.755096,-32.227487   , ../bc_dbase/intakes/CSound_PRP_BP_Intake_2013_2021.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! Verve Intake South
+bc == QC, 115.770804,-32.198633   , ../bc_dbase/intakes/CSound_Apr2013_PRP_VerveSouth_intake_2013_2021.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! Verve Intake North
+bc == QC, 115.771757,-32.196188   , ../bc_dbase/intakes/CSound_Apr2013_PRP_VerveNorth_intake_2013_2021.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! PSDP Intake
+bc == QC, 115.771757,-32.196188   , ../bc_dbase/intakes/CSound_PSDP_intake_2013_2021.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../bc_dbase/intakes/IntakeExtractionHeight_001.csv
+end bc

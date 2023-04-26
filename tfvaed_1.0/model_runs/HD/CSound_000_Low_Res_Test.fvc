@@ -1,0 +1,160 @@
+! Configured by Gayan Gunaratne based on SEPIA fvc for Cockburn Sound
+! Initial run for velocity validation
+! Feb-Mar 2007 period
+! Date 07/07/22 
+! Modified by Kabir Suara: Mesh changed, FES2014 replaces TOPEX, discharge and source file removed
+! GIS for material and nodestrings added, Higher order restricted to within the Sound to avoid model instabilities
+!________________________________________________________________
+ hardware == gpu
+ 
+! GIS 
+!_________________________________________________________________
+GIS format == shp
+shp projection == ../../../model/gis/shp/projection.prj
+ 
+! SIMULATION CONFIGURATION
+!______________________________________________________________
+spherical == 1  
+include salinity == 1,1   												! <0;1, 0;1> 0 for false & 1 for true
+include temperature == 1,1  											! <0;1, 0;1> 0 for false & 1 for true
+include sediment == 0,0														! <0;1, 0;1> 0 for false & 1 for true
+Ntracer == 1																			! Number of passive tracers
+include heat == 1																	! <0;1, 0;1> 0 for false & 1 for true
+momentum mixing model == Smagorinsky							! <None, Constant, Smagorinsky>
+scalar mixing model == Smagorinsky				      	! <None, Constant, Smagorinsky;Elder;Warmup>
+vertical mixing model == External 					   		! <Constant;Parametric;External>
+external turbulence model dir == ../../../external/GOTM/
+bottom drag model == ks														! <Manning;Ks>
+spatial order == 2,2													! <1;2 (horizontal), 1;2 (vertical)>
+horizontal gradient limiter == LCD								! <LCD;MLG> => Limited Central Difference or Maximum Limited Gradient
+!water quality model == EXTERNAL
+
+!TIME COMMANDS
+!_________________________________________________________________
+cfl external == 0.7															! <Global Maximum Courant Number>
+cfl internal == 0.7														! <Global Maximum Courant Number>
+time format == ISODATE														! <Hours;ISODate>
+!start time ==  11/01/2007 00:00:00				  			! <simulation start time>
+start time ==  02/01/2013 00:00:00	
+end time ==    31/03/2013 00:00:00								! <simulation stop time>
+timestep limits == 0.1, 10.0							  	  ! <min timestep (s), max timestep (s)>
+turbulence update dt == 300.                    ! for GOTM (s)
+display dt == 900.														
+
+!MODEL PARAMETERS
+!_________________________________________________________________
+stability limits == 17.0,10.0											! <maximum WL, maximum velocity>
+cell wet/dry depths == 5.0e-3, 1.0e-1							! <cells dry depth (m), cell wet depth (m)>
+cell 3d depth == 1 ! 0.5                              ! <cells where computation are 2d in case they are shallower than>
+g == 9.81
+global bottom roughness == 0.05								  	! <Global roughness>
+reference salinity == 35.0
+reference temperature == 20.0
+reference density == 1030.0
+kinematic viscosity == 1.0e-6
+global horizontal eddy viscosity == 0.5
+global horizontal eddy viscosity limits == 1.0, 9999.0
+global horizontal scalar diffusivity == 0.2
+global horizontal scalar diffusivity limits == 1.0, 9999.0
+global vertical eddy viscosity limits == 1.0e-4, 1.0
+global vertical scalar diffusivity limits == 0.0, 1.0
+echo geometry == 1
+!GEOMETRY
+!_________________________________________________________________
+geometry 2D == ../../../model/geo/mesh/Cockburn_Sound_Mesh_C_LowRes_001.2dm
+
+Read GIS Nodestring == ../../../model/gis/nodestrings/2d_ns_Cockburn_Sound_005_L.shp
+
+!3D MODEL
+vertical mesh type == z 
+layer faces == ../../../model/geo/z_layer/SEP_zlayer_0p25.csv
+sigma layers == 4          
+min bottom layer thickness == 0.5  
+
+
+! Materials
+Read GIS Mat == ../../../model/gis/material/Cockburn_Sound_Material_005.shp
+
+! Spatial Order set to 1st order with spatial reconstruction == 0
+material == 1,3 ! Default, and Deep Water
+	bottom roughness == 0.02
+	spatial reconstruction == 0
+end material	
+
+
+material == 2 ! CSound (Area within Cockburn SOund)
+	bottom roughness == 0.002
+	spatial reconstruction == 1
+end material
+
+material == 4 ! Swan River
+	bottom roughness == 0.02
+	spatial reconstruction == 1
+end material
+
+!BOUNDARY CONDITIONS
+! ROMS
+!_________________________________________________________________
+
+include == ..\..\..\includes\ROMS_20130101_20131231.fvc
+
+! TOPEX data
+!_________________________________________________________________
+!include == ..\..\includes\TOPEX_200001_202201.fvc
+
+
+! BARRA for Atmospherics
+!_________________________________________________________________
+include == ..\..\..\includes\BARRA_20130101_20131231.fvc	
+
+! SWAN Wave
+!_________________________________________________________________
+include == ..\..\..\includes\WAVE_20130101_20131231.fvc  
+
+!SWAN River
+!__________________________________________________________________
+include == ..\..\..\includes\Swan_river_20120315_20140331.fvc 
+
+! Outfall and intakes discaharge 
+!_________________________________________________________________
+include == ..\..\..\includes\Discharge_and_Intake_20130101_20140101.fvc  
+
+
+
+!INITIAL CONDITIONS
+!_________________________________________________________________
+! 
+
+initial condition ogcm ! Use ROMS data for initial condition
+initial water level == 0.5
+initial condition quiescent ! Use ROMS data for initial condition
+! restart file == log\CSound_003_warmup_loaded.rst
+
+!OUTPUT COMMANDS
+!_________________________________________________________________
+
+output dir == ../../../model/output/CSound_000/HD_016 !Scratch 1
+!output dir == Y:\Scratch2\A11348_CockburnSound_BCG_Model\output\CSound_HD\HD_016 !Kabir's machine
+
+
+output == netcdf
+  output parameters == h,v,sal,temp!,trace_1
+  output interval == 1800
+end output 
+
+!output == points
+!	output points file == ../../../model/output_points/CSound_2013_pts_002.csv									! Check for different season scenarios
+!	vertical averaging == sigma-range, 0, 1
+!	output parameters == H,V,TEMP,SAL,trace_1
+!	output interval == 900. ! (s)
+!End output
+!
+!
+!Output == profiles
+!	output points file == ../../../model/output_points/CSound_2013_pts_002.csv									! Check for different season scenarios
+!	Output parameters == H,V,TEMP,SAL,trace_1
+!	Output interval == 900. !(s)
+!End output
+
+write restart dt == 24
+

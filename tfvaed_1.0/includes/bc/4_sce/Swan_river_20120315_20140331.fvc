@@ -1,0 +1,32 @@
+! Swan River Boundary
+! OBC_CURTAIN
+bc == OBC_CURT, 2, ../bc_dbase/swan_river/NAR_Tide_20120315_20140331.nc
+  sub-type == 6
+  bc header == time,chainage,depth,dummy,dummy,dummy,SAL,TEMP
+  bc update dt == 900.
+  bc time units == hours
+  bc reference time == 01/01/1990 00:00
+  bc offset == 0.0, 0.0, 0.0, 0.0, 0.0
+  vertical coordinate type == depth
+end bc
+
+bc == OBC_CURT, 3, ../bc_dbase/swan_river/CAN_Tide_20120315_20140331.nc
+  sub-type == 6
+  bc header == time,chainage,depth,dummy,dummy,dummy,SAL,TEMP
+  bc update dt == 900.
+  bc time units == hours
+  bc reference time == 01/01/1990 00:00
+  bc offset == 0.0, 0.0, 0.0, 0.0, 0.0
+  vertical coordinate type == depth
+end bc
+
+bc == WL, 2, ..\bc_dbase\swan_river\NAR_Inflow.csv
+ sub-type == 1
+ bc header == ISOTime, wl,dummy,dummy,ones
+ 
+end BC
+
+bc== WL, 3, ..\bc_dbase\swan_river\Canning_Inflow_Tide.csv
+ sub-type == 1
+ bc header == ISOTime, wl,dummy,dummy,ones
+end BC

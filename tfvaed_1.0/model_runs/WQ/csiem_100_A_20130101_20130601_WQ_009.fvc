@@ -1,0 +1,204 @@
+!________________________________________________________________!
+!                                                                !
+! COCKBURN SOUND INTEGRATED ECOSYSTEM MODEL (CSIEM)              !
+!                                                                !
+! CSIEM 3D Hydrodynamic-Biogeochemical simulation                !
+!                                                                !
+! TUFLOW-FV Configuration File                                   !
+!                                                                !
+! Developed as part of the WAMSI Westport Marine Science Program !
+! Date 31/04/2023                                                !
+!                                                                !
+! This simulation focus: Jan-Dec 2013 period with WQ             !                        
+! AED model configuration including nutrients and five phytos    !
+!________________________________________________________________!
+
+
+
+! SIMULATION HARDWARE 
+!_________________________________________________________________
+! hardware == gpu
+ 
+! SIMULATION CONFIGURATION
+!_________________________________________________________________
+spherical == 1  
+include salinity == 1,1                                           ! <0;1, 0;1> 0 for false & 1 for true
+include temperature == 1,1                                        ! <0;1, 0;1> 0 for false & 1 for true
+include sediment == 0,0                                           ! <0;1, 0;1> 0 for false & 1 for true
+Ntracer == 1                                                      ! Number of passive tracers
+include heat == 1                                                 ! <0;1, 0;1> 0 for false & 1 for true
+
+momentum mixing model == Smagorinsky                              ! <None, Constant, Smagorinsky>
+scalar mixing model == Smagorinsky                                ! <None, Constant, Smagorinsky;Elder;Warmup>
+vertical mixing model == External                                 ! <Constant;Parametric;External>
+external turbulence model dir == ../../includes/turbulence/GOTM
+bottom drag model == ks                                           ! <Manning;Ks>
+spatial order == 2,2                                              ! <1;2 (horizontal), 1;2 (vertical)>
+horizontal gradient limiter == LCD                                ! <LCD;MLG> => Limited Central Difference or Maximum Limited Gradient
+
+water quality model == EXTERNAL
+external water quality model dir == ../../includes/wq/AED  
+
+! TIME COMMANDS
+!_________________________________________________________________
+cfl external == 0.7                                               ! <Global Maximum Courant Number>
+cfl internal == 0.7                                               ! <Global Maximum Courant Number>
+time format == ISODATE                                            ! <Hours;ISODate>
+start time ==  02/01/2013 00:00:00 
+end time ==    31/12/2013 00:00:00                                ! <simulation stop time>
+timestep limits == 0.1, 10.0                                      ! <min timestep (s), max timestep (s)>
+turbulence update dt == 300.                                      ! for GOTM (s)
+display dt == 900.              
+
+! MODEL PARAMETERS
+!_________________________________________________________________
+stability limits == 17.0,10.0                                     ! <maximum WL, maximum velocity>
+cell wet/dry depths == 5.0e-3, 1.0e-1                             ! <cells dry depth (m), cell wet depth (m)>
+cell 3d depth == 1 ! 0.5                                          ! <cells where computation are 2d in case they are shallower than>
+g == 9.81
+global bottom roughness == 0.05                                   ! <Global roughness>
+reference salinity == 35.0
+reference temperature == 20.0
+reference density == 1030.0
+kinematic viscosity == 1.0e-6
+global horizontal eddy viscosity == 0.5
+global horizontal eddy viscosity limits == 1.0, 9999.0
+global horizontal scalar diffusivity == 0.2
+global horizontal scalar diffusivity limits == 1.0, 9999.0
+global vertical eddy viscosity limits == 1.0e-4, 1.0
+global vertical scalar diffusivity limits == 0.0, 1.0
+
+! GIS PROJECTION
+!_________________________________________________________________
+GIS format == shp
+shp projection == ../../gis_repo/1_domain/projection/projection.prj
+ 
+! GEOMETRY & DOMAIN
+!_________________________________________________________________
+echo geometry == 1
+
+geometry 2D == ../../gis_repo/1_domain/mesh/Cockburn_Sound_Mesh_008.2dm
+!cell elevation file == ../../gis_repo/1_domain/bathymetry/cell_centres_interp.csv, coordinate
+
+Read GIS Nodestring == ../../gis_repo/1_domain/nodestrings/2d_ns_Cockburn_Sound_005_L.shp
+!Read GIS Nodestring == ../../../model/gis/nodestrings/2d_ns_Cockburn_Sound_005_WQ_split_001_L.shp
+
+!3D MODEL
+vertical mesh type == z 
+layer faces == ../../gis_repo/1_domain/layers/SEP_zlayer_0p25_002.csv
+sigma layers == 4          
+min bottom layer thickness == 0.5  
+
+
+! BOTTOM MATERIALS
+!_________________________________________________________________
+
+Read GIS Mat == ../../gis_repo/2_benthic/materials/Cockburn_Sound_Material_010.shp
+
+! Spatial Order set to 1st order with spatial reconstruction == 0
+material == 1,9,10,11,12 ! Default, and Deep Water
+ bottom roughness == 0.02
+ spatial reconstruction == 0
+end material 
+
+material == 4,5,6,7 ! CSound (Area within Cockburn SOund)
+ bottom roughness == 0.002
+ spatial reconstruction == 1
+end material
+
+material == 16 ! Swan River
+ bottom roughness == 0.02
+ spatial reconstruction == 1
+end material
+
+material == 2,14,15 ! Banks and Artificial structures
+ bottom roughness == 0.02
+ spatial reconstruction == 1
+end material
+
+material == 3,13 ! Sea grass
+ bottom roughness == 0.012
+ spatial reconstruction == 1
+end material
+
+material == 8 ! Patchy seagrass
+ bottom roughness == 0.017
+ spatial reconstruction == 1
+end material
+
+
+!
+!BOUNDARY CONDITIONS
+!_________________________________________________________________
+
+! OCEAN
+
+  include == ..\..\includes\bc\1_ocean\obc_wq_20130101_20131231_WQ008.fvc   ! ROMS plus OBC_wq
+! include == ..\..\..\includes\TOPEX_200001_202201.fvc
+
+! WEATHER
+
+include == ..\..\includes\bc\2_weather\met_BARRA_regional_20130101_20131231.fvc  ! Yikes - BMT used R not PH for WQ
+
+! WAVES
+
+include == ..\..\includes\bc\3_waves\wave_SWAN_20130101_20131231.fvc  
+
+! SWAN-CANNING
+
+include == ..\..\includes\bc\4_sce\Swan_river_20120315_20140331_wq_v2.fvc
+
+! OUTFALLS & INTAKES 
+
+include == ..\..\includes\bc\7_discharges\Discharge_and_Intake_20130101_20140101.fvc  
+
+
+!INITIAL CONDITIONS
+!_________________________________________________________________
+
+! initial condition ogcm ! Use ROMS data for initial condition
+  initial water level == 0.5
+! initial condition quiescent ! Override ROMS velocites to zero to avoid shock
+  initial salinity == 36.0
+  initial temperature == 24.7
+  Initial Tracer Concentration  == 0.0, 0.0, 0.0, 100.0
+
+! restart file == log\CSound_003_warmup_loaded.rst
+! WQ variables     OXY_oxy,NIT_amm,NIT_nit,PHS_frp,OGM_doc,OGM_poc,OGM_don,OGM_pon,OGM_dop,OGM_pop,PHY_mdiat,PHY_dinof,PHY_cyano
+! WQ variables     TSS,Oxy,   Amm,  Nit,  FRP, FRP_ads,DOC,   POC,  DON, PON, DOP, POP, CHLA,CHLA,CHLA,CHLA,CHLA
+  Initial WQ concentration ==  1.0, 214.9,0.143,0.072,0.06,0.0,   116.05,11.61,6.30,0.63,0.35,0.035,0.5, 1.0, 2.5, 0.5, 0.5
+
+
+!OUTPUT COMMANDS
+!_________________________________________________________________
+
+! Makesure to have the correct folder path
+output dir == ../../outputs/results/WQ_009/ 
+
+output == netcdf
+  output parameters == h,v,sal,temp,trace_1
+  output interval == 3600
+end output 
+
+output == points
+ output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv         ! Check for different season scenarios
+ vertical averaging == sigma-range, 0, 1
+ output parameters == H,V,TEMP,SAL,trace_1
+ output interval == 900. ! (s)
+End output
+
+output == profiles
+ output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv         ! Check for different season scenarios
+ Output parameters == H,V,TEMP,SAL,trace_1
+ Output interval == 900. !(s)
+End output
+
+output == netcdf
+ output parameters == wq_all
+ suffix == WQ
+  output interval == 7200.
+  output compression == 1
+end output
+
+write restart dt == 24
+

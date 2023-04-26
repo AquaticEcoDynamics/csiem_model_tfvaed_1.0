@@ -1,0 +1,17 @@
+!  ROMS data
+grid definition file == ../bc_dbase/ROMS/ROMS_UTC+8_20150101_20160101_FILLED.nc
+grid definition variables == lon, lat, depth
+vertical coordinate type == depth
+grid definition label == roms
+boundary grid map == 1
+end grid
+
+bc == OBC_GRID, roms, ../bc_dbase/ROMS/ROMS_UTC+8_20150101_20160101_FILLED.nc
+  sub-type == 6
+  bc header == time,surf_el,water_u,water_v,salinity,water_temp 
+  bc nodestrings == 1
+  bc update dt == 900.
+  bc time units == hours
+  bc reference time == 01/01/1990 00:00   ! apply time zone correction
+  bc offset == -0.42, 0.0, 0.0, 0.0 ! May need to change this offset for water level...
+end bc

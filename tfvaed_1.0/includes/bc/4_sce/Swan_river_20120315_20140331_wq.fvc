@@ -1,0 +1,40 @@
+! Swan River Boundary
+! OBC_CURTAIN
+bc == OBC_CURT, 2, ../bc_dbase/swan_river/NAR_Tide_20120315_20140331.nc
+  sub-type == 6
+  bc header == time,chainage,depth,dummy,dummy,dummy,SAL,TEMP
+  bc update dt == 900.
+  bc time units == hours
+  bc reference time == 01/01/1990 00:00
+  bc offset == 0.0, 0.0, 0.0, 0.0, 0.0
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+end bc
+
+bc == OBC_CURT, 3, ../bc_dbase/swan_river/CAN_Tide_20120315_20140331.nc
+  sub-type == 6
+  bc header == time,chainage,depth,dummy,dummy,dummy,SAL,TEMP
+  bc update dt == 900.
+  bc time units == hours
+  bc reference time == 01/01/1990 00:00
+  bc offset == 0.0, 0.0, 0.0, 0.0, 0.0
+  bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  vertical coordinate type == depth
+end bc
+
+bc == WL, 2, ..\bc_dbase\swan_river\NAR_Inflow.csv
+ sub-type == 1
+ bc header == ISOTime, wl,dummy,dummy,zeroes,TSS,Oxy,Amm,Nit,FRP,zeroes,DOC_T,POC_T,DON_T,PON_T,OP, OP, CHLA, CHLA, CHLA, CHLA, CHLA
+ !            ISOTime, wl,Sal,  Temp, TRACE1,TSS,Oxy,Amm,Nit,FRP,zeroes,DOC_T,POC_T,DON_T,PON_T,OP, OP, CHLA, CHLA, CHLA, CHLA, CHLA
+ bc scale ==          1.0,1.000,1.000,1.0000,0.7,1.5,1.0,1.0,0.1,0.1000,0.500,0.300,1.000,0.300,0.5,0.9,0.125,0.333,2.292,1.250,0.0075
+!bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ 
+end BC
+
+bc== WL, 3, ..\bc_dbase\swan_river\Canning_Inflow_Tide.csv
+ sub-type == 1
+ bc header == ISOTime, wl,dummy,dummy,zeroes,TSS,Oxy,Amm,Nit,FRP,zeroes,DOC_T,POC_T,DON_T,PON_T,OP, OP, CHLA, CHLA, CHLA, CHLA, CHLA
+ !            ISOTime, wl,Sal,  Temp, TRACE1,TSS,Oxy,Amm,Nit,FRP,zeroes,DOC_T,POC_T,DON_T,PON_T,OP, OP, CHLA, CHLA, CHLA, CHLA, CHLA
+ bc scale ==          1.0,1.000,1.000,1.0000,0.7,1.5,1.0,1.0,0.1,0.1000,0.500,0.300,1.000,0.300,0.5,0.9,0.125,0.333,2.292,1.250,0.0075
+!bc default == 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+end BC

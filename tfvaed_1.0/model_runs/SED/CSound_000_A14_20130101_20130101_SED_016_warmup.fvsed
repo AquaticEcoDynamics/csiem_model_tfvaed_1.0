@@ -1,0 +1,130 @@
+! CockburnSound Sediment Transport Module
+! Configured by Gayan Gunaratne on 24/01/2023
+!_______________________________________________________________
+
+!_________________________________________________________________ 
+!TIME COMMANDS
+!Start Time == 1.
+update dt == 900. !changed from 3600 to 900
+
+!_________________________________________________________________
+!SIMULATION CONFIG COMMANDS
+Morphological Coupling == 0 										!Turn on/off Morphological Feedback to Hydrodynamics. 1 to enable feedback, 0 to disable.
+morfac == 1.0														!morfac on to speed up the warmup. This is switched on only for the warmup
+Concentration profile model == default
+Bed roughness model == ks 											!ks, d50 or vanRijn .
+Bed roughness parameters == 0.0020, 0.0015 							!! Hydrodynamic and wave related roughness.
+!Bed roughness coupling == 0 										!Turn on/off Bed Sediment Feedback to Bed Roughness. 1 to enable feedback, 0 to disable.
+Erosion Depth Limits == 0.05, 0.10 									!Depth to scale Erosion to Zero (<0.1m no erosion, >0.2m full erosion)
+Deposition Depth Limits == 0.01, 0.05 								!Depth to scale Deposition to Zero (<0.1m no deposition, >0.2m full deposition)
+!Armour layer thickness == 0.05, 0.2 								!Specify Min and Max Armour Layer Thickness [m]
+
+!_________________________________________________________________
+!SEDIMENT FRACTION COMMANDS
+! Three types of fractions defined 
+fraction == sand													!Sediment Fraction 1 Name
+	d50 == 250.0e-6													! Median Sediment Diameter [m], 250 micron median grain size
+	particle density == 2650.					   
+	settling model == constant
+	settling parameters == 1.0E-02									! (m/s) From PSDP2
+	deposition model == ws0
+	critical stress model == soulsby_egiazaroff
+	erosion model == vanRijn84
+	erosion parameters == 0.02, -1.
+	bed load model == none
+end fraction    
+
+Fraction == fines 													!Sediment Fraction 1 Name
+	d50 == 30.0e-6 													!Median Sediment Diameter [m], 125 micron median grain size
+	particle density == 2650 										!Particle Density [kg/m3]
+	Settling model == constant 										!Settling Model
+	settling parameters == 1.0e-04	! (m/s) 						!Settling Velocity [m/s]
+	deposition model == krone 										!Deposition model
+	deposition parameters == 0.18									!From Toondah harbour model
+	Erosion Model == Mehta 											!Choice of Erosion model
+	Erosion parameters == 0.1, 0.15, 1.0 							!Er, taucr, alpha
+	bed load model == none
+End Fraction 
+
+!_________________________________________________________________
+!MATERIAL SPECS COMMANDS 
+! Bed Sediment properties for each material.
+material == 0				 									!Default material definition
+	!Bed layer independant commands
+	Bed Load Scale == 1.0
+	Suspended Load Scale == 1.0
+	Nlayer == 1		! Number of sediment layers
+	Layer == 1 ! Assuming a single layer with ~50cm of sediment, gives an initial mass of 400 kgm2
+	  Dry density == 800.0, 800.0 !kg/m3
+	  Initial mass == 380.0, 20.0 ! Nsed=2, sand to fines ratio 95:5
+	  !Non erodible mass == 40.0, 0.0 !
+	End Layer
+end material
+
+!-------------------------------------------------------------------------------
+! 98:2 sand:fines areas
+material == 26,27 												!350-1000 grain size
+!material == 21,22,23,25,26,27,28,4 												!90:2 sand:fines ratio
+	Bed Load Scale == 1.0	
+	Suspended Load Scale == 1.0 									!Calibration Factor for suspended load
+	Nlayer == 1														!Number of bed layers
+	Layer == 1 														!Begin Layer Definition	
+		Dry density == 800.0, 800.0 							!Dry Density of Sediment Fractions [kg/m3]
+		initial mass == 392.0, 8.0							!Initial mass of sediment fractions [kg/m2] 
+			
+	End Layer 														!End layer definition
+	
+end material 		
+
+!......................................................................................
+
+!90:10 sand:fines ratio
+! Carbonate banks mat zones 21,22,23
+! CockBurn Sound Eastern Shoal Sand mat zone 25
+! Nearshore Quartz Sand - mat zone 26,27,28
+! Swan River - mat zone 4
+material == 24,25,4 												!!125-350 grain size
+	Bed Load Scale == 1.0	
+	Suspended Load Scale == 1.0 									!Calibration Factor for suspended load
+	Nlayer == 1														!Number of bed layers
+	Layer == 1 														!Begin Layer Definition	
+		Dry density == 800.0, 800.0 							!Dry Density of Sediment Fractions [kg/m3]
+		initial mass == 360.0, 40.0							!Initial mass of sediment fractions [kg/m2] 
+		
+	End Layer 														!End layer definition
+	
+end material 		
+
+!-------------------------------------------------------------------------------
+!CockBurn Sound Central Basin 
+!largely fines
+material == 23 														!carbonate sandy mud - 30:70 sand:fines ratio
+	Bed Load Scale == 1.0	
+	Suspended Load Scale == 1.0 									!Calibration Factor for suspended load
+	Nlayer == 1														!Number of bed layers
+	Layer == 1 														!Begin Layer Definition	
+		Dry density == 800.0, 800.0 							!Dry Density of Sediment Fractions [kg/m3]
+		initial mass == 120.0, 280.0								!Initial mass of sediment fractions [kg/m2] 
+				
+	End Layer 														!End layer definition
+	
+end material 	
+
+!-------------------------------------------------------------------------------
+!CockBurn Sound Central Basin 
+!largely fines
+material == 21,22 														!carbonate sandy mud - 10:90 sand:fines ratio
+	Bed Load Scale == 1.0	
+	Suspended Load Scale == 1.0 									!Calibration Factor for suspended load
+	Nlayer == 1														!Number of bed layers
+	Layer == 1 														!Begin Layer Definition	
+		Dry density == 800.0, 800.0 							!Dry Density of Sediment Fractions [kg/m3]
+		initial mass == 40.0, 360.0								!Initial mass of sediment fractions [kg/m2] 
+		
+	End Layer 														!End layer definition
+	
+end material 	
+	
+
+Write restart dt == 24.0 !Write Restart File Interval [hrs]
+!Bed restart file == log\CSound_000_A13_20130101_20130101_SED_001_bed.rst 						!Read Bed Restart File
