@@ -1,9 +1,9 @@
 ! Swan River Boundary
 
-bc == WL, 2, ..\bc_dbase\swan_river\NAR_Inflow.csv
+bc == WL, 2, ../../../bc_repo/4_sce/CSV/NAR_Inflow_v2.csv
   bc header == ISOTime, wl,Sal,Temp,ones
  end BC
 
-bc== WL, 3, ..\bc_dbase\swan_river\Canning_Inflow_Tide.csv
+bc== WL, 3, ../../../bc_repo/4_sce/CSV/Canning_Inflow_Tide_v1.csv
  bc header == ISOTime, wl,Sal,Temp,ones
 end BC

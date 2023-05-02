@@ -10,7 +10,7 @@
 ! GIS 
 !_________________________________________________________________
 GIS format == shp
-shp projection == ../../../model/gis/shp/projection.prj
+shp projection == ../../gis_repo/1_domain/projection/projection.prj
  
 ! SIMULATION CONFIGURATION
 !______________________________________________________________
@@ -23,7 +23,7 @@ include heat == 1																	! <0;1, 0;1> 0 for false & 1 for true
 momentum mixing model == Smagorinsky							! <None, Constant, Smagorinsky>
 scalar mixing model == Smagorinsky				      	! <None, Constant, Smagorinsky;Elder;Warmup>
 vertical mixing model == External 					   		! <Constant;Parametric;External>
-external turbulence model dir == ../../../external/GOTM/
+external turbulence model dir == ../../includes/turbulence/GOTM
 bottom drag model == ks														! <Manning;Ks>
 spatial order == 2,2													! <1;2 (horizontal), 1;2 (vertical)>
 horizontal gradient limiter == LCD								! <LCD;MLG> => Limited Central Difference or Maximum Limited Gradient
@@ -61,64 +61,39 @@ global vertical scalar diffusivity limits == 0.0, 1.0
 echo geometry == 1
 !GEOMETRY
 !_________________________________________________________________
-geometry 2D == ../../../model/geo/mesh/Cockburn_Sound_Mesh_008.2dm
-!cell elevation file == ../../../model/geo/cell_centre/cell_centres_interp.csv, coordinate
+include == ..\..\includes\domain\domain_config_csiem_mesh_A.fvc
 
-Read GIS Nodestring == ../../../model/gis/nodestrings/2d_ns_Cockburn_Sound_005_L.shp
+! BOTTOM MATERIALS
+!_________________________________________________________________
 
-!3D MODEL
-vertical mesh type == z 
-layer faces == ../../../model/geo/z_layer/SEP_zlayer_0p25.csv
-sigma layers == 4          
-min bottom layer thickness == 0.5  
+Read GIS Mat == ../../gis_repo/2_benthic/materials/Cockburn_Sound_Material_005.shp
 
+! Bottom roughness
 
-! Materials
-Read GIS Mat == ../../../model/gis/material/Cockburn_Sound_Material_005.shp
-
-! Spatial Order set to 1st order with spatial reconstruction == 0
-material == 1,3 ! Default, and Deep Water
-	bottom roughness == 0.02
-	spatial reconstruction == 0
-end material	
-
-
-material == 2 ! CSound (Area within Cockburn SOund)
-	bottom roughness == 0.002
-	spatial reconstruction == 1
-end material
-
-material == 4 ! Swan River
-	bottom roughness == 0.02
-	spatial reconstruction == 1
-end material
+include == ..\..\includes\sed\roughness_hd.fvc
 
 !BOUNDARY CONDITIONS
 ! ROMS
 !_________________________________________________________________
 
-include == ..\..\..\includes\ROMS_20130101_20131231.fvc
-
-! TOPEX data
-!_________________________________________________________________
-!include == ..\..\includes\TOPEX_200001_202201.fvc
+include == ..\..\includes\bc\1_ocean\obc_20130101_20131231.fvc   ! ROMS plus OBC_wq
 
 
 ! BARRA for Atmospherics
 !_________________________________________________________________
-include == ..\..\..\includes\BARRA_20130101_20131231.fvc	
+include == ..\..\includes\bc\2_weather\met_BARRA_regional_20130101_20131231.fvc  ! Yikes - BMT used R not PH for WQ
 
 ! SWAN Wave
 !_________________________________________________________________
-include == ..\..\..\includes\WAVE_20130101_20131231.fvc  
+include == ..\..\includes\bc\3_waves\wave_SWAN_20130101_20131231.fvc  
 
 !SWAN River
 !__________________________________________________________________
-include == ..\..\..\includes\Swan_river_20120315_20140331.fvc 
+include == ..\..\includes\bc\4_sce\Swan_river_20120315_20140331_wq_v2.fvc
 
 ! Outfall and intakes discaharge 
 !_________________________________________________________________
-include == ..\..\..\includes\Discharge_and_Intake_20130101_20140101.fvc  
+include == ..\..\includes\bc\7_discharges\Discharge_and_Intake_20130101_20140101.fvc  
 
 
 
@@ -133,29 +108,7 @@ initial condition quiescent ! Use ROMS data for initial condition
 
 !OUTPUT COMMANDS
 !_________________________________________________________________
-
-output dir == U:\scratchers\A11348_CockburnSound_BCG_Model\output\CSound_000\HD_016 !Scratch 1
-!output dir == Y:\Scratch2\A11348_CockburnSound_BCG_Model\output\CSound_HD\HD_016 !Kabir's machine
-
-
-output == netcdf
-  output parameters == h,v,sal,temp,trace_1
-  output interval == 1800
-end output 
-
-output == points
-	output points file == ../../../model/output_points/CSound_2013_pts_002.csv									! Check for different season scenarios
-	vertical averaging == sigma-range, 0, 1
-	output parameters == H,V,TEMP,SAL,trace_1
-	output interval == 900. ! (s)
-End output
-
-
-Output == profiles
-	output points file == ../../../model/output_points/CSound_2013_pts_002.csv									! Check for different season scenarios
-	Output parameters == H,V,TEMP,SAL,trace_1
-	Output interval == 900. !(s)
-End output
+include == ..\..\includes\output\output_hd.fvc
 
 write restart dt == 24
 
