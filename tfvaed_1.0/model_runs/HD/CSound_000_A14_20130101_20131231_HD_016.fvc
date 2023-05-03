@@ -99,12 +99,7 @@ include == ..\..\includes\bc\7_discharges\Discharge_and_Intake_20130101_20140101
 
 !INITIAL CONDITIONS
 !_________________________________________________________________
-! 
-
-initial condition ogcm ! Use ROMS data for initial condition
-initial water level == 0.5
-initial condition quiescent ! Use ROMS data for initial condition
-! restart file == log\CSound_003_warmup_loaded.rst
+include == ..\..\includes\domain\initial_conditions_hd.fvc
 
 !OUTPUT COMMANDS
 !_________________________________________________________________

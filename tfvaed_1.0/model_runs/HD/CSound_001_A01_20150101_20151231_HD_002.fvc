@@ -7,7 +7,7 @@
 ! GIS 
 !_________________________________________________________________
 GIS format == shp
-shp projection == ../../../model/gis/shp/projection.prj
+shp projection == ../../gis_repo/1_domain/projection/projection.prj
  
 ! SIMULATION CONFIGURATION
 !______________________________________________________________
@@ -73,27 +73,9 @@ min bottom layer thickness == 0.5
 ! Materials
 Read GIS Mat == ../../../model/gis/material/Cockburn_Sound_Material_010.shp
 
-! Spatial Order set to 1st order with spatial reconstruction == 0
-material == 1,9,10,11,12,13 ! Default, and Deep Water
-	bottom roughness == 0.02
-	spatial reconstruction == 0
-end material	
+! Bottom roughness
 
-
-material == 4,5,6,7,8 ! CSound (Area within Cockburn SOund)
-	bottom roughness == 0.002
-	spatial reconstruction == 1
-end material
-
-material == 16 ! Swan River
-	bottom roughness == 0.02
-	spatial reconstruction == 1
-end material
-
-material == 2,3,14,15 ! Banks and Artificial structures
-	bottom roughness == 0.02
-	spatial reconstruction == 1
-end material
+include == ..\..\includes\sed\roughness_hd_10.fvc
 
 !BOUNDARY CONDITIONS
 ! ROMS
@@ -126,36 +108,13 @@ include == ..\..\..\includes\Discharge_and_Intake_20150101_20160101.fvc
 
 !INITIAL CONDITIONS
 !_________________________________________________________________
-! 
+include == ..\..\includes\domain\initial_conditions_hd.fvc
 
-initial condition ogcm ! Use ROMS data for initial condition
-initial water level == 0.5
-initial condition quiescent ! Use ROMS data for initial condition
-! restart file == log\CSound_003_warmup_loaded.rst
 
 !OUTPUT COMMANDS
 !_________________________________________________________________
 
-!output dir == U:\A11348_CockburnSound_BCG_Model\output\HD2015\HD_002\
-output dir == X:\scratchers\A11348_CockburnSound_BCG_Model\output\HD2015\HD_002\
-output == netcdf
-  output parameters == h,v,sal,temp,trace_1
-  output interval == 3600
-end output 
-
-output == points
-	output points file == ../../../model/output_points/CSound_2013_pts_002.csv									! Check for different season scenarios
-	vertical averaging == sigma-range, 0, 1
-	output parameters == H,V,TEMP,SAL,trace_1
-	output interval == 900. ! (s)
-End output
-
-
-Output == profiles
-	output points file == ../../../model/output_points/CSound_2013_pts_002.csv									! Check for different season scenarios
-	Output parameters == H,V,TEMP,SAL,trace_1
-	Output interval == 900. !(s)
-End output
+include == ..\..\includes\output\output_hd.fvc
 
 write restart dt == 24
 

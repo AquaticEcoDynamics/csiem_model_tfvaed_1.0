@@ -1,0 +1,43 @@
+
+***************************** TUFLOWFV *****************************
+
+Build version: 2020.03.085_uwa
+Build date: 16/04/2021 13:30
+Build platform: Linux
+Build architecture:  x86-64
+Compiler version: Ifort 19.0.3
+Build precision: single
+NVidia GPU NOT enabled.
+GIS Module Version: 2020-07-PD
+
+********************************************************************
+
+Computer name: rosella
+User name: hydro
+Execution timestamp: 25/04/2023 20:00:54
+
+Attempting to process input control file:
+Trying to open file: CSound_001_A01_20130101_20130601_WQ_009.fvc ...NOT OK
+
+ERROR: Unable to open file: CSound_001_A01_20130101_20130601_WQ_009.fvc
+
+ERROR-STACK:fvctrl_construct:fvopen:Unable to open file: CSound_001_A01_20130101_20130601_WQ_009.fvc
+
+
+Simulation Summary:
+
+Input File: /Projects2/csiem/tfvaed_1.0/model_runs/WQ/CSound_001_A01_20130101_20130601_WQ_009.fvc
+Log File: /Projects2/csiem/tfvaed_1.0/model_runs/WQ/log/CSound_001_A01_20130101_20130601_WQ_009.log
+
+Computer name: rosella
+User name: hydro
+Execution Timestamp: 25/04/2023 20:00:54
+Execution Completed: 25/04/2023 20:00:55
+
+Number of warnings = 0
+
+Fatal Error Encountered!
+
+
+Exiting TUFLOWFV
+

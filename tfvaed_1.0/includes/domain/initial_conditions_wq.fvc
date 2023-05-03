@@ -1,0 +1,12 @@
+! initial condition ogcm ! Use ROMS data for initial condition
+  initial water level == 0.5
+! initial condition quiescent ! Override ROMS velocites to zero to avoid shock
+  initial salinity == 36.0
+  initial temperature == 24.7
+  Initial Tracer Concentration  == 0.0, 0.0, 0.0, 100.0
+
+! restart file == log\CSound_003_warmup_loaded.rst
+! WQ variables     OXY_oxy,NIT_amm,NIT_nit,PHS_frp,OGM_doc,OGM_poc,OGM_don,OGM_pon,OGM_dop,OGM_pop,PHY_mdiat,PHY_dinof,PHY_cyano
+! WQ variables     TSS,Oxy,   Amm,  Nit,  FRP, FRP_ads,DOC,   POC,  DON, PON, DOP, POP, CHLA,CHLA,CHLA,CHLA,CHLA
+  Initial WQ concentration ==  1.0, 214.9,0.143,0.072,0.06,0.0,   116.05,11.61,6.30,0.63,0.35,0.035,0.5, 1.0, 2.5, 0.5, 0.5
+

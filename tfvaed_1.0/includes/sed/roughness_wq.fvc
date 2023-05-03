@@ -1,0 +1,30 @@
+! Spatial Order set to 1st order with spatial reconstruction == 0
+material == 1,9,10,11,12 ! Default, and Deep Water
+ bottom roughness == 0.02
+ spatial reconstruction == 0
+end material 
+
+material == 4,5,6,7 ! CSound (Area within Cockburn SOund)
+ bottom roughness == 0.002
+ spatial reconstruction == 1
+end material
+
+material == 16 ! Swan River
+ bottom roughness == 0.02
+ spatial reconstruction == 1
+end material
+
+material == 2,14,15 ! Banks and Artificial structures
+ bottom roughness == 0.02
+ spatial reconstruction == 1
+end material
+
+material == 3,13 ! Sea grass
+ bottom roughness == 0.012
+ spatial reconstruction == 1
+end material
+
+material == 8 ! Patchy seagrass
+ bottom roughness == 0.017
+ spatial reconstruction == 1
+end material

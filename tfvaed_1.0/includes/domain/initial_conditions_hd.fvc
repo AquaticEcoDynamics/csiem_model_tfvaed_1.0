@@ -1,0 +1,5 @@
+initial condition ogcm ! Use ROMS data for initial condition
+initial water level == 0.5
+initial condition quiescent ! Use ROMS data for initial condition
+! restart file == log\CSound_003_warmup_loaded.rst
+

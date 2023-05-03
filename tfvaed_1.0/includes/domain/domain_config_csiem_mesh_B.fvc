@@ -1,0 +1,11 @@
+geometry 2D == ../../gis_repo/1_domain/mesh/Cockburn_Sound_Mesh_009.2dm
+
+Read GIS Nodestring == ../../gis_repo/1_domain/nodestrings/2d_ns_Cockburn_Sound_005_L.shp
+
+!3D MODEL
+vertical mesh type == z 
+layer faces == ../../gis_repo/1_domain/layers/SEP_zlayer_0p25_002.csv
+sigma layers == 4          
+min bottom layer thickness == 0.5  
+
+Write Check Files  == ./log/check/

@@ -1,0 +1,27 @@
+output dir == ..\..\outputs\results !Scratch 1
+
+
+output == netcdf
+  output parameters == h,v,sal,temp,trace_1
+  output interval == 1800
+end output 
+
+output == points
+	output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv 								! Check for different season scenarios
+	vertical averaging == sigma-range, 0, 1
+	output parameters == H,V,TEMP,SAL,trace_1
+	output interval == 900. ! (s)
+End output
+
+output == netcdf
+ output parameters == wq_all
+ suffix == WQ
+  output interval == 7200.
+  output compression == 1
+end output
+
+Output == profiles
+	output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv 								! Check for different season scenarios
+	Output parameters == H,V,TEMP,SAL,trace_1
+	Output interval == 900. !(s)
+End output
