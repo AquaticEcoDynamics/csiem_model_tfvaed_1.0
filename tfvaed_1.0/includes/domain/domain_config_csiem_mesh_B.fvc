@@ -8,4 +8,4 @@ layer faces == ../../gis_repo/1_domain/layers/SEP_zlayer_0p25_002.csv
 sigma layers == 4          
 min bottom layer thickness == 0.5  
 
-Write Check Files  == ./log/check/
+!Write Check Files  == ./log/check/

@@ -77,7 +77,7 @@ shp projection == ../../gis_repo/1_domain/projection/projection.prj
 !_________________________________________________________________
 echo geometry == 1
 
-include == ..\..\includes\domain\domain_config_csiem_mesh_A.fvc
+include == ..\..\includes\domain\domain_config_csiem_mesh_B.fvc
 
 
 ! BOTTOM MATERIALS

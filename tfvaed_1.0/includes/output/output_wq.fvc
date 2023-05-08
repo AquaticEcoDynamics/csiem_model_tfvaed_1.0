@@ -14,7 +14,7 @@ output == points
 End output
 
 output == netcdf
- output parameters == wq_all
+ output parameters == h,d,sal,temp,wq_all,wq_diag_all
  suffix == WQ
   output interval == 7200.
   output compression == 1
