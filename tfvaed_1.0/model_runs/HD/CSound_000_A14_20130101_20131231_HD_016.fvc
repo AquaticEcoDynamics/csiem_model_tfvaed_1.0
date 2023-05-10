@@ -20,14 +20,12 @@ include temperature == 1,1  											! <0;1, 0;1> 0 for false & 1 for true
 include sediment == 0,0														! <0;1, 0;1> 0 for false & 1 for true
 Ntracer == 1																			! Number of passive tracers
 include heat == 1																	! <0;1, 0;1> 0 for false & 1 for true
-momentum mixing model == Smagorinsky							! <None, Constant, Smagorinsky>
-scalar mixing model == Smagorinsky				      	! <None, Constant, Smagorinsky;Elder;Warmup>
-vertical mixing model == External 					   		! <Constant;Parametric;External>
-external turbulence model dir == ../../includes/turbulence/GOTM
-bottom drag model == ks														! <Manning;Ks>
-spatial order == 2,2													! <1;2 (horizontal), 1;2 (vertical)>
-horizontal gradient limiter == LCD								! <LCD;MLG> => Limited Central Difference or Maximum Limited Gradient
-!water quality model == EXTERNAL
+
+! Turbulence CONFIGURATION
+!_________________________________________________________________
+
+include == ..\..\includes\turbulence\turbulence.fvc
+
 
 !TIME COMMANDS
 !_________________________________________________________________
