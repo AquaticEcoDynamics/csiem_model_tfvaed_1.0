@@ -59,6 +59,7 @@ tfvaed_1.0/bc_repo/
 
 #Netcdf Results files
 tfvaed_1.0/outputs/results/
+tfvaed_1.0/outputs/
 tfvaed_1.0/model_runs/HD/log/
 tfvaed_1.0/model_runs/WQ/log/
 tfvaed_1.0/model_runs/SED/log/

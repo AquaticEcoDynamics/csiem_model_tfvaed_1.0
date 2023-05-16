@@ -2,26 +2,35 @@ output dir == ..\..\outputs\results !Scratch 1
 
 
 output == netcdf
-  output parameters == h,v,sal,temp,trace_1
+  output parameters == h,d,v,w,sal,temp,trace_1
   output interval == 1800
 end output 
 
-output == points
-	output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv 								! Check for different season scenarios
-	vertical averaging == sigma-range, 0, 1
-	output parameters == H,V,TEMP,SAL,trace_1
-	output interval == 900. ! (s)
-End output
+!output == points
+!	output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv 								! Check for different season scenarios
+!	vertical averaging == sigma-range, 0, 1
+!	output parameters == H,V,W,TEMP,SAL,trace_1
+!	output interval == 900. ! (s)
+!End output
 
 output == netcdf
- output parameters == h,d,sal,temp,wq_all,wq_diag_all
+ output parameters == h,d,v,w,sal,temp,wq_all,wq_diag_all
  suffix == WQ
   output interval == 7200.
   output compression == 1
 end output
 
-Output == profiles
-	output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv 								! Check for different season scenarios
-	Output parameters == H,V,TEMP,SAL,trace_1
-	Output interval == 900. !(s)
-End output
+output == netcdf
+ output parameters == h,d,v,w,sal
+ suffix == hires
+  output interval == 600.
+  output compression == 1
+  start output == 01/01/2013
+  final Output == 30/01/2013 00:00:00
+end output
+
+!Output == profiles
+!	output points file == ../../gis_repo/3_output/points/CSound_2013_pts_002.csv 								! Check for different season scenarios
+!	Output parameters == H,V,W,TEMP,SAL,trace_1
+!	Output interval == 900. !(s)
+!End output

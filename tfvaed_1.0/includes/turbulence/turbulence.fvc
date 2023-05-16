@@ -1,7 +1,6 @@
 ! Turbulence CONFIGURATION
 !_________________________________________________________________
 
-include == ..\..\includes\turbulence\turbulence.fvc
 momentum mixing model == Smagorinsky                              ! <None, Constant, Smagorinsky>
 scalar mixing model == Smagorinsky                                ! <None, Constant, Smagorinsky;Elder;Warmup>
 vertical mixing model == External                                 ! <Constant;Parametric;External>

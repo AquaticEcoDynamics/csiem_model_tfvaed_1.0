@@ -28,11 +28,11 @@ include sediment == 0,0                                           ! <0;1, 0;1> 0
 Ntracer == 1                                                      ! Number of passive tracers
 include heat == 1                                                 ! <0;1, 0;1> 0 for false & 1 for true
 
-
 ! Turbulence CONFIGURATION
 !_________________________________________________________________
 
 include == ..\..\includes\turbulence\turbulence.fvc
+
 
 water quality model == EXTERNAL
 external water quality model dir == ../../includes/wq/AED  
