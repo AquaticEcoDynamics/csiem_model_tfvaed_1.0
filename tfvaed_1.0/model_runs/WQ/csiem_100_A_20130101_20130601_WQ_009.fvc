@@ -122,6 +122,8 @@ include == ..\..\includes\domain\initial_conditions_wq.fvc
 
 ! Makesure to have the correct folder path
 include == ..\..\includes\output\output_wq.fvc
+include == ..\..\includes\output\output_met.fvc
+include == ..\..\includes\output\output_wave.fvc
 
 write restart dt == 24
 

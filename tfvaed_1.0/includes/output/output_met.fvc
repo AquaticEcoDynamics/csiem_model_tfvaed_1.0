@@ -1,0 +1,9 @@
+output dir == ..\..\outputs\results !Scratch 1
+
+
+output == netcdf
+  suffix == met
+  output parameters == h,d,lw_rad,precip,rel_hum,sw_rad,w10
+  output interval == 3600
+end output 
+
