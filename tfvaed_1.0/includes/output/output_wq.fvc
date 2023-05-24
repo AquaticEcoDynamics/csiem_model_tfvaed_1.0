@@ -16,12 +16,12 @@ end output
 output == netcdf
  output parameters == h,d,v,w,sal,temp,wq_all,wq_diag_all
  suffix == WQ
-  output interval == 7200.
+  output interval == 14400.
   output compression == 1
 end output
 
 output == netcdf
- output parameters == h,d,v,w,sal
+ output parameters == h,d,v,w,sal,temp
  suffix == hires
   output interval == 600.
   output compression == 1
