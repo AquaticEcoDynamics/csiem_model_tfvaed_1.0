@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 <!--
-Test readme for the tfvaed_1.0 cycle 1 model
+Readme for the tfvaed_1.0 Cycle 1 Cockburn Sound model
 -->
 
 
@@ -18,19 +18,22 @@ Test readme for the tfvaed_1.0 cycle 1 model
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+
+<!--
   <a href="https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
+-->
 
-<h3 align="center">WAMSI Westport Science Program: Theme 1.1</h3>
+<h3 align="center">WAMSI Westport <em>Cockburn Sound Water Quality Model</em></h3>
 
   <p align="center">
-    project_description
+    This repository houses the hydrodynamic-biogeochemical model for Cockburn Sound, a coastal embayment located near Perth, Western Australia.
     <br />
-    <a href="https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0"><strong>Explore the docs »</strong></a>
+    <a href="https://aquaticecodynamics.github.io/csiem-science/"><strong>Explore the online manual »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0">View Demo</a>
+    <a href="https://aquaticecodynamics.github.io/csiem-science/appendix-b-results-archive.html">View Demo</a>
     ·
     <a href="https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0/issues">Report Bug</a>
     ·
@@ -67,20 +70,35 @@ Test readme for the tfvaed_1.0 cycle 1 model
 </details>
 
 
+<br>
+
+
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+<br>
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+In 2022, the Western Australian Marine Science Insitution and Wesport commisioned development of an independent hydrodynamic-biogeochemical model for [Cockburn Sound](https://en.wikipedia.org/wiki/Cockburn_Sound), which is located on the coast of Perth, Western Australia.
+
+The model uses the [TUFLOW-FV](https://www.tuflow.com/products/tuflow-fv/) 3D finite volume hydrodynamic model, and the [AED](https://aquaticecodynamics.github.io/aed-science/) water quality model.
+
+
+<!-- Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-### Built With
+## Built With
 
+<br>
+
+[![TUFLOW-FV](https://img.shields.io/badge/TUFLOW--FV-2020.008-yellow)](https://tuflow.com/products/tuflow-fv/)
+[![AED](https://img.shields.io/badge/AED-2.0.5-brightgreen)](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html)
+
+<!--
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
@@ -91,44 +109,57 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+-->
+<br>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+<br>
+
+This repository contains model files that can be run locally on Windows or Linux. To get a local copy up and running follow these steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+This repository includes the model files required for a TUFLOW-FV - AED simulation run. Running the setup contained herein requires users to have an active TUFLOW-FV license with the AED [pre-compiled plugin](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html).
 
+Download and install the TUFLOW-FV model and license server.
+* tuflow-fv
+  ```sh
+  ......
+  ```
+Download and install the compatible AED model plugin (FV-AED).
+* fv-aed
+  ```sh
+  ......
+  ```
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0.git
    ```
-3. Install NPM packages
+2. Fetch the dependent NetCDF files required as boundary conditions (BC's)
    ```sh
-   npm install
+   ./fetch_csiem.sh 1.0
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+3. Enter the main model run directory, and execute model
+   ```sh
+   cd model_runs/ 
+   /opt/bin/tfv_aed csiem_100_A_20130101_20130601_WQ_009.fvc
    ```
+
+### Analysis
+
+ Input files and model output files are able to be processed using the `csiem-marvl` repository that includes the supporting scripts and site data. Please contact the developers for further information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
+
+<!--
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
@@ -136,10 +167,12 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+-->
 
 
 <!-- ROADMAP -->
+
+<!-- 
 ## Roadmap
 
 - [ ] Feature 1
@@ -150,13 +183,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 See the [open issues](https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+-->
 
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions from the user and developer community are welcome and **greatly appreciated**!.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -174,7 +207,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the --- License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -183,9 +216,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Matt Hipsey: [@matthipsey](https://twitter.com/matthipsey) - matt.hipsey@uwa.edu.au
 
-Project Link: [https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0](https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0)
+Project Link: [csiem_model](https://github.com/AquaticEcoDynamics/csiem_model)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -194,9 +227,10 @@ Project Link: [https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0](htt
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* Funding from the [WAMSI Westport Research Program]()
+* Gayan Gunaratne, Louise Bruce and the [BMT]() software team
+* Brendan Busch & Peisheng Huang from the [AED]() research group
+* Oceanographic models from Ivica Janeković & Chari Pattiaratchi from the [UWA Oceans Institute]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
