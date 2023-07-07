@@ -1,0 +1,72 @@
+! TUFLOW-FV configuration file for wrf Atmospheric Dataset for Perth (PH) region
+! Written by `get_barra.py`
+
+! wrf netcdf start time: 2013-01-01 00:00
+! wrf netcdf end time: 2013-12-31 05:00
+! wrf netcdf x-limits: 114.2250, 115.8750
+! wrf netcdf y-limits: -33.5950, -30.5150
+
+grid definition file == ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  grid definition variables == longitude, latitude
+  grid definition label == wrf
+end grid
+
+bc == MSLP_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, PSFC
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+  bc scale == 0.01
+end bc
+
+bc == LW_RAD_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, GLW
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+end bc
+
+bc == SW_RAD_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, SWDOWN
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+end bc
+
+bc == AIR_TEMP_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, T2
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+  bc offset == 0.0
+end bc
+
+bc == W10_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, U10, V10
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+end bc
+
+bc == PRECIP_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, RAINV
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+  bc scale == 0.048
+end bc
+
+bc == REL_HUM_GRID, wrf, ..\..\..\bc_repo\2_weather\WRF\WRF_d02_UTC+0_20220101_20230101.nc
+  bc header == local_time, REL_HUM
+  bc update dt == 3600.
+  bc time units == hours
+  bc reference time == 01/01/1990 08:00
+  bc default == NaN
+end bc
+

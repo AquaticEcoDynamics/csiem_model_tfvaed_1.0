@@ -1,0 +1,9 @@
+output dir == ..\..\outputs\results !Scratch 1
+
+
+output == netcdf
+  suffix == trace
+  output parameters == h,d,wq_trc_tr1,wq_trc_tr2,wq_trc_tr3,wq_trc_tr4
+  output interval == 7200
+end output 
+

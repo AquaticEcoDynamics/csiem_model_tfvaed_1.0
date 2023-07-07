@@ -1,0 +1,130 @@
+!________________________________________________________________!
+!                                                                !
+! COCKBURN SOUND INTEGRATED ECOSYSTEM MODEL (CSIEM)              !
+!                                                                !
+! CSIEM 3D Hydrodynamic-Biogeochemical simulation                !
+!                                                                !
+! TUFLOW-FV Configuration File                                   !
+!                                                                !
+! Developed as part of the WAMSI Westport Marine Science Program !
+! Date 31/04/2023                                                !
+!                                                                !
+! This simulation focus: Jan-Dec 2015 period with HD             !                        
+!________________________________________________________________!
+
+
+! SIMULATION HARDWARE 
+!_________________________________________________________________
+ hardware == gpu
+ 
+! SIMULATION CONFIGURATION
+!_________________________________________________________________
+spherical == 1  
+include salinity == 1,1                                           ! <0;1, 0;1> 0 for false & 1 for true
+include temperature == 1,1                                        ! <0;1, 0;1> 0 for false & 1 for true
+include sediment == 0,0                                           ! <0;1, 0;1> 0 for false & 1 for true
+Ntracer == 1                                                      ! Number of passive tracers
+include heat == 1                                                 ! <0;1, 0;1> 0 for false & 1 for true
+
+! Turbulence CONFIGURATION
+!_________________________________________________________________
+
+include == ..\..\includes\turbulence\turbulence.fvc
+
+
+!water quality model == EXTERNAL
+!external water quality model dir == ../../includes/wq/AED  
+
+! TIME COMMANDS
+!_________________________________________________________________
+cfl external == 0.7                                               ! <Global Maximum Courant Number>
+cfl internal == 0.7                                               ! <Global Maximum Courant Number>
+time format == ISODATE                                            ! <Hours;ISODate>
+start time ==  01/01/2015 00:00:00 
+end time ==    01/01/2016 00:00:00                                ! <simulation stop time>
+timestep limits == 0.1, 10.0                                      ! <min timestep (s), max timestep (s)>
+turbulence update dt == 300.                                      ! for GOTM (s)
+display dt == 900.              
+
+! MODEL PARAMETERS
+!_________________________________________________________________
+stability limits == 17.0,10.0                                     ! <maximum WL, maximum velocity>
+cell wet/dry depths == 5.0e-3, 1.0e-1                             ! <cells dry depth (m), cell wet depth (m)>
+cell 3d depth == 1 ! 0.5                                          ! <cells where computation are 2d in case they are shallower than>
+g == 9.81
+global bottom roughness == 0.05                                   ! <Global roughness>
+reference salinity == 35.0
+reference temperature == 20.0
+reference density == 1030.0
+kinematic viscosity == 1.0e-6
+global horizontal eddy viscosity == 0.0
+global horizontal eddy viscosity limits == 0.0, 9999.0
+global horizontal scalar diffusivity == 0.0
+global horizontal scalar diffusivity limits == 0.0, 9999.0
+global vertical eddy viscosity limits == 0.0, 1.0
+global vertical scalar diffusivity limits == 0.0, 1.0
+
+! GIS PROJECTION
+!_________________________________________________________________
+GIS format == shp
+shp projection == ../../gis_repo/1_domain/projection/projection.prj
+ 
+! GEOMETRY & DOMAIN
+!_________________________________________________________________
+echo geometry == 1
+
+include == ..\..\includes\domain\domain_config_csiem_mesh_B_budgeting.fvc
+
+
+! BOTTOM MATERIALS
+!_________________________________________________________________
+
+Read GIS Mat == ../../gis_repo/2_benthic/materials/Cockburn_Sound_Material_011.shp
+
+
+! Bottom roughness
+
+include == ..\..\includes\sed\roughness_wq_Material_011.fvc
+
+!
+!BOUNDARY CONDITIONS
+!_________________________________________________________________
+
+! OCEAN
+
+  include == ..\..\includes\bc\1_ocean\obc_wq_20150101_20151231_WQ008_tracer.fvc   ! ROMS HD plus OBC_wq from IMOS
+
+! WEATHER
+
+include == ..\..\includes\bc\2_weather\met_BARRA_perth_20150101_20151231.fvc  ! BARRA Perth output
+
+! WAVES
+
+!include == ..\..\includes\bc\3_waves\wave_WWM_20150101_20151231.fvc   ! WWM output
+
+! SWAN-CANNING
+
+include == ..\..\includes\bc\4_sce\Swan_river_20150101_20151231_H.fvc
+
+! OUTFALLS & INTAKES 
+
+include == ..\..\includes\bc\7_discharges\Discharge_and_Intake_20150101_20160101.fvc  
+
+! Groundwater
+include == ..\..\includes\bc\6_gw\groundwater_2015.fvc 
+
+!INITIAL CONDITIONS
+!_________________________________________________________________
+include == ..\..\includes\domain\initial_conditions_wq_tracer.fvc
+
+!OUTPUT COMMANDS
+!_________________________________________________________________
+
+! Makesure to have the correct folder path
+include == ..\..\includes\output\output_hd.fvc
+include == ..\..\includes\output\output_met.fvc
+!include == ..\..\includes\output\output_wave.fvc
+! include == ..\..\includes\output\output_trc.fvc
+
+write restart dt == 24
+

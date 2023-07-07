@@ -1,0 +1,40 @@
+grid definition file ==  ..\..\..\bc_repo\3_waves\WWM\WWM_Agrid_UTC+0_20220101_20221231.nc
+  grid definition variables == Xp,Yp
+  grid definition label == wave_grid_nestA
+end grid
+
+bc == wave, wave_grid_nestA, ..\..\..\bc_repo\3_waves\WWM\WWM_Agrid_UTC+0_20220101_20221231.nc
+                bc header == time,Hsig,TPsmoo,Dir,dummy,dummy,dummy,dummy,dummy
+                bc scale ==  1.,1.,1.,1.414,1.,1.,1.  ! Scaling . Note Time is excluded. i.e 1st scale corresponds to variable just after Time
+                bc update dt == 600   ! Hourly BC update
+                bc reference time == 01/01/1990 08:00
+                bc time units == hours
+end bc
+
+
+grid definition file ==  ..\..\..\bc_repo\3_waves\WWM\WWM_Bgrid_UTC+0_20220101_20221231.nc
+  grid definition variables == Xp,Yp
+  grid definition label == wave_grid_nestB
+end grid
+
+bc == wave, wave_grid_nestB, ..\..\..\bc_repo\3_waves\WWM\WWM_Bgrid_UTC+0_20220101_20221231.nc
+                bc header == time,Hsig,TPsmoo,Dir,dummy,dummy,dummy,dummy,dummy
+                bc scale ==  1.,1.,1.,1.414,1.,1.,1.  ! Scaling . Note Time is excluded. i.e 1st scale corresponds to variable just after Time
+                bc update dt == 600   ! Hourly BC update
+                bc reference time == 01/01/1990 08:00
+                bc time units == hours
+end bc
+
+
+grid definition file ==  ..\..\..\bc_repo\3_waves\WWM\WWM_Cgrid_UTC+0_20220101_20221231.nc
+  grid definition variables == Xp,Yp
+  grid definition label == wave_grid_nestC
+end grid
+
+bc == wave, wave_grid_nestC, ..\..\..\bc_repo\3_waves\WWM\WWM_Cgrid_UTC+0_20220101_20221231.nc
+                bc header == time,Hsig,TPsmoo,Dir,dummy,dummy,dummy,dummy,dummy
+                bc scale ==  1.,1.,1.,1.414,1.,1.,1.  ! Scaling . Note Time is excluded. i.e 1st scale corresponds to variable just after Time
+                bc update dt == 600   ! Hourly BC update
+                bc reference time == 01/01/1990 08:00
+                bc time units == hours
+end bc

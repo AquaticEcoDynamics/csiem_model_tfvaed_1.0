@@ -47,6 +47,7 @@
      link_bottom_drag = .true.
      link_surface_drag = .false.
      link_water_density = .false.
+	 link_wave_stress = .true.
    !-- Linkages with host model: LIGHT
      link_ext_par = .false.
      link_water_clarity = .true.
@@ -57,7 +58,7 @@
      link_solar_shade = .false.
      link_rain_loss = .false.
    !-- Benthic variable initialisation
-    ! init_values_file = '../External/AED/PHY_MPB.csv'
+    init_values_file = '../../includes/wq/AED/aed_benthic_map_mesh_009.csv'
     !route_table_file = '../External/AED/Routing_Tbl.csv'
 /
 !###############################################################################
@@ -79,8 +80,7 @@
 !-------------------------------------------------------------------------------
 &aed_models
     models =  'aed_sedflux',
-              !'aed_macrophyte',
-              !'aed_tracer',
+              'aed_macrophyte',
               'aed_noncohesive',
               'aed_oxygen',
              !'aed_carbon',
@@ -90,6 +90,7 @@
               'aed_organic_matter',
               'aed_phytoplankton',
 	          'aed_totals'
+			  'aed_tracer',
 /
 !###############################################################################
 ! aed_sedflux
@@ -98,15 +99,16 @@
    sedflux_model = 'Constant2D'    ! Refer to M:\UWA\A11348_Cockburn_Sound_BCG_Model\2Exectn\2Modelling\2TUFLOWFV\model\gis\material\Cockburn_Sound_Material_006.shp
 /
 &aed_sed_const2d	!Default,	etc
-   n_zones  = 16 !1s->   2		3		4      5 		6    	 7      8      	9		10      11      12      13		14 		15		16
-   Fsed_oxy = 	-15,	-10, 	-10, 	-10, 	-10, 	-15, 	-40, 	-10, 	-2.5, 	-15, 	-15,	-15,	-15,	-10,	-10,	-20
-   Fsed_rsi =   3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0
-   Fsed_frp =   0.1,	-0.1,	-0.1,	-0.1,	-0.1,	0.1,	-0.1,	-0.1,	-0.5,	0.1,	0.1,	0.1,	0.1,	-0.1,	-0.1,	0.1
-   Fsed_amm =   3.5,	-6.0,	-6.0,	-6.0,   -6.0,   -3.5,	-6.0	-6.0	-7.0,	3.5,	3.5,	3.5,	3.5,	-6.0,	-6.0	3.0	
-   Fsed_nit =   0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	-3.0,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5,	0.5
-   Fsed_doc =   3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0,	3.0
-   Fsed_don =   5.0,	2.0,	2.0,	2.0,	2.0,	5.0,	2.0,	2.0,	2.0,	5.0,	5.0,	5.0,	5.0,	2.0,	2.0,	5.0
-   Fsed_dop =   0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0,	0.0
+   n_zones  = 21 !1s->   2		3		4      5 		6    	 7      8      	9		10      11      12      13		14 		15		16		17		18		19		20		21
+   active_zones = 1, 9,	6,	16,	51,	57,	21,	22,	23,	24,	25,	26,	27,	11,	58,	53,	55,	59,	56,	52,	50
+   Fsed_oxy = 	-1.0000,-2.5000,-15.0000,-20.0000,-15.0000,-15.0000,-45.0000,-40.0000,-40.0000,-40.0000,-40.0000,-40.0000,-25.0000,-15.0000,-5.0000,-5.0000,-10.0000,-15.0000,-15.0000,-20.0000,-5.0000
+   Fsed_rsi =   0.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000
+   Fsed_frp =   0.0000,-0.5000,0.1000,0.1000,0.1000,-0.1000,0.2000,0.1000,0.0500,0.0400,0.0300,0.0300,0.0300,-0.1000,-0.1000,-0.1000,-0.1000,-0.1000,-0.1000,-0.1000,0.0500
+   Fsed_amm =   0.0000,0.1000,1.0000,3.0000,1.0000,1.0000,3.5000,3.0000,2.5000,2.0000,1.5000,1.0000,1.0000,-6.0000,-5.0000,-6.0000,-1.0000,-1.0000,-5.0000,-5.0000,1.0000
+   Fsed_nit =   0.0000,-2.0000,-1.0000,0.0000,-1.0000,-1.0000,0.0000,-0.5000,-0.5000,-0.5000,-0.5000,-1.0000,-1.5000,-1.0000,-1.0000,-1.0000,0.0000,0.0000,-1.0000,-1.0000,-1.0000
+   Fsed_doc =   0.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000,3.0000
+   Fsed_don =   0.0000,0.0050,0.5000,1.0000,1.0000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000,0.5000
+   Fsed_dop =   0.0000,0.0000,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010,0.0010
    Fsed_pon = -1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10
    Fsed_pop = -1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10
    Fsed_poc = -1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10,	-1e10
@@ -126,26 +128,14 @@
 !-------------------------------------------------------------------------------
 &aed_macrophyte
    num_mphy         = 1
-   the_mphy         = 2
-   n_zones          = 4
-   active_zones     = 1,2,3,4             ! Refer to ../Geo/Zones.PNG
+   the_mphy         = 3
+   n_zones          = 1
+   active_zones     = 25             ! Refer to ../Geo/Zones.PNG
    simStaticBiomass = .true.
-   simMacFeedback   = .true.
-   dbase            = '../External/AED/aed_macrophyte_pars.nml'
+   simMacFeedback   = .false.
+   dbase            = '../../includes/wq/AED/aed_macrophyte_pars.nml'
 /
-!###############################################################################
-! TRC: aed_tracer
-!
-! Refer to the below link for module settings & parameter details:
-! http://aquatic.science.uwa.edu.au/research/models/AED/aed_tracer.html
-!
-!-------------------------------------------------------------------------------
-&aed_tracer
-   !-- Optional retention time tracer
-    retention_time = .true.
-   !-- Select number of tracers and their decay/sedflux/light properties
-    num_tracers = 0
-/
+
 !###############################################################################
 ! NCS: aed_noncohesive
 !
@@ -169,7 +159,7 @@
     tau_0        = 0.06, 0.06 !0.03, 0.03
     tau_r        = 1.0
     Ktau_0       = 0.001
-    macrophyte_link_var = ' ' !'MAC_halophila'
+    macrophyte_link_var = 'MAC_seagrass' !'MAC_halophila'
    !-- Configure sediment mass
     simSedimentMass= .true.
     fs           = 0.4,0.4
@@ -519,4 +509,17 @@
               'PHY_crypt'
    Turb_varscale = 0.33,0.003,0.003,0.003,0.003,0.003,0.003
   ! Table 4 in science plan, with OGM and PHY vars converted from mmolC to gC) ;
+/
+!###############################################################################
+! TRC: aed_tracer
+!
+! Refer to the below link for module settings & parameter details:
+! http://aquatic.science.uwa.edu.au/research/models/AED/aed_tracer.html
+!
+!-------------------------------------------------------------------------------
+&aed_tracer
+   !-- Optional retention time tracer
+    retention_time = .true.
+   !-- Select number of tracers and their decay/sedflux/light properties
+    num_tracers = 4
 /

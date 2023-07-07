@@ -1,17 +1,17 @@
 ! TUFLOW-FV configuration file for including the BARRA Atmospheric Dataset for Perth region
 ! Written by `get_barra.py`
 
-! BARRA netcdf start time: 2013-01-01 00:00
-! BARRA netcdf end time: 2013-12-31 05:00
-! BARRA netcdf x-limits: 114.2250, 115.8750
-! BARRA netcdf y-limits: -33.5950, -30.5150
+! BARRA Netcdf start time: 2015-01-01 03:00
+! BARRA Netcdf end time: 2015-12-31 08:00
+! BARRA Netcdf x-limits: 114.2010, 115.8885
+! BARRA Netcdf y-limits: -33.6930, -30.5070
 
-grid definition file == ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+grid definition file == ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc 
   grid definition variables == longitude, latitude
   grid definition label == barra
 end grid
 
-bc == MSLP_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == MSLP_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, mslp
   bc update dt == 3600.
   bc time units == hours
@@ -20,7 +20,7 @@ bc == MSLP_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc
   bc scale == 0.01
 end bc
 
-bc == LW_RAD_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == LW_RAD_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, lwsfcdown
   bc update dt == 3600.
   bc time units == hours
@@ -28,7 +28,7 @@ bc == LW_RAD_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.
   bc default == NaN
 end bc
 
-bc == SW_RAD_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == SW_RAD_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, swsfcdown
   bc update dt == 3600.
   bc time units == hours
@@ -36,7 +36,7 @@ bc == SW_RAD_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.
   bc default == NaN
 end bc
 
-bc == AIR_TEMP_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == AIR_TEMP_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, temp_scrn
   bc update dt == 3600.
   bc time units == hours
@@ -45,7 +45,7 @@ bc == AIR_TEMP_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_2014010
   bc offset == -273.15
 end bc
 
-bc == W10_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == W10_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, uwnd10m, vwnd10m
   bc update dt == 3600.
   bc time units == hours
@@ -53,7 +53,7 @@ bc == W10_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc
   bc default == NaN
 end bc
 
-bc == PRECIP_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == PRECIP_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, precip_rate
   bc update dt == 3600.
   bc time units == hours
@@ -62,7 +62,7 @@ bc == PRECIP_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.
   bc scale == 0.024
 end bc
 
-bc == REL_HUM_GRID, barra, ..\bc_repo\2_weather\BARRA\BARRA_PH_20130101_20140101.nc 
+bc == REL_HUM_GRID, barra, ..\..\..\bc_repo\2_weather\BARRA\BARRA_PH_UTC+8_20130101_20131231.nc
   bc header == local_time, relhum
   bc update dt == 3600.
   bc time units == hours

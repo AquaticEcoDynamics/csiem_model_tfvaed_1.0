@@ -1,0 +1,28 @@
+!  ROMS data
+grid definition file == ../../../bc_repo/1_ocean/ROMS/ROMS_UTC+8_20220101_20221231_FILLED.nc
+grid definition variables == lon, lat, depth
+vertical coordinate type == depth
+grid definition label == roms
+boundary grid map == 1
+end grid
+
+bc == OBC_GRID, roms, ../../../bc_repo/1_ocean/ROMS/ROMS_UTC+8_20220101_20221231_FILLED.nc
+  sub-type == 6
+  bc header == time,surf_el,water_u,water_v,salinity,water_temp 
+  bc nodestrings == 1
+  bc update dt == 900.
+  bc time units == hours
+  bc reference time == 01/01/1990 00:00   ! apply time zone correction
+  bc offset == -0.42, 0.0, 0.0, 0.0 ! May need to change this offset for water level...
+  !             surf_el,water_u,water_v,salinity,water_temp, Trace1, TSS,Oxy,  Amm,Nit, FRP,FRP_ads,DOC,   POC,  DON,  PON, DOP, POP,CHLA,CHLA,CHLA,CHLA,CHLA,TRC1,TRC2,TRC3,TRC4
+  bc default == 0.0, 0.0, 0.0, 35.0, 24.7, 0.0, 1.0, 214.9,3.8,12.9,2.9, 116.05,11.61,15.66,1.57,0.71,0.07,1.0, 2.0, 5.0, 1.0, 1.0,0,0,0,0
+end bc
+
+! Biogeochemical (scalar) bcs for Cockburn Sound boundary nodestring
+
+! WQ OBC - northmost nodestring
+bc == SCALAR, 1, ../../../bc_repo/1_ocean/WQ/ocean_bgc_IMOS_20220101_20221231.csv
+    bc header == Date,dummy,dummy,ZEROS,TSS, DO, AMM,NIT,FRP, ZEROS, DOC,POC,DON,PON,DOP,POP,GRN,BGA,CRYPT,MDIAT,DINO, ZEROS, ZEROS, ZEROS, ZEROS, ZEROS
+    bc scale ==        1,    1,   1,      1,  1, 1,  1,    1,  1,    1,  1,  1.0,1,  1.0,  1,   1,   1,   1,    1,  1,     1,     1,     1,     1,     1
+end bc
+

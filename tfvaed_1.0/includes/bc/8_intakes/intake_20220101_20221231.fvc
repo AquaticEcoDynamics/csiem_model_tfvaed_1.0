@@ -1,0 +1,35 @@
+! Intakes for Cockburn Sound BGC Water Quality model for 20220101 to 20230101
+
+!!!! INTAKES ----------------------------------------------------------------------------------
+
+!-- PDSP Intake
+bc == QC,115.770454,-32.200828, ../../../bc_repo/8_intakes/PSDP/PSDP1_20220101_20230101_wq.csv
+  bc header == Date, Q
+  bc scale == -1.636
+  vertical coordinate type == height
+  vertical distribution == ../../../bc_repo/8_intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! BP Intake
+bc == QC, 115.755096,-32.227487  ,  ../../../bc_repo/8_intakes/BP/BP_20100101_20230101.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../../../bc_repo/8_intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! Verve Intake (South)
+bc == QC, 115.770804,-32.198633  ,  ../../../bc_repo/8_intakes/Verve/PRP_VerveSouth_20100101_20230101.csv 
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../../../bc_repo/8_intakes/IntakeExtractionHeight_001.csv
+end bc
+
+! Verve Intake (North)
+bc == QC, 115.771757,-32.196188  ,  ../../../bc_repo/8_intakes/Verve/PRP_VerveNorth_20100101_20230101.csv
+  bc header == DATE,Q
+  bc scale == -1.0
+  vertical coordinate type == height
+  vertical distribution == ../../../bc_repo/8_intakes/IntakeExtractionHeight_001.csv
+end bc

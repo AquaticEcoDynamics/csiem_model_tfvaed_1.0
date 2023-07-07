@@ -3,7 +3,7 @@ output dir == ..\..\outputs\results !Scratch 1
 
 output == netcdf
   output parameters == h,d,v,w,sal,temp,trace_1
-  output interval == 1800
+  output interval == 7200
 end output 
 
 !output == points
@@ -20,13 +20,8 @@ output == netcdf
   output compression == 1
 end output
 
-output == netcdf
- output parameters == h,d,v,w,sal,temp
- suffix == hires
-  output interval == 600.
-  output compression == 1
-  start output == 01/01/2013
-  final Output == 30/01/2013 00:00:00
+output == flux
+  output interval == 1800
 end output
 
 !Output == profiles
