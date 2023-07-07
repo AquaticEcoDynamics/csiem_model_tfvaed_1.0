@@ -55,11 +55,11 @@ vignettes/*.pdf
 .Rproj.user
 
 #Netcdf BC files
-tfvaed_1.0/bc_repo/
+bc_repo/
 
 #Netcdf Results files
-tfvaed_1.0/outputs/results/
-tfvaed_1.0/outputs/
-tfvaed_1.0/model_runs/HD/log/
-tfvaed_1.0/model_runs/WQ/log/
-tfvaed_1.0/model_runs/SED/log/
+outputs/results/
+outputs/
+model_runs/HD/log/
+model_runs/WQ/log/
+model_runs/SED/log/
