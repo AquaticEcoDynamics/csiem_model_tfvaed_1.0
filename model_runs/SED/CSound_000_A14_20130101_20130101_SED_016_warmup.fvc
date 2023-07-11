@@ -70,7 +70,7 @@ Sediment Control File == CSound_000_A14_20130101_20130101_SED_016_warmup.fvsed 	
 geometry 2D == ../../../model/geo/mesh/Cockburn_Sound_Mesh_008.2dm
 !cell elevation file == ../../../model/geo/cell_centre/cell_centres_interp.csv, coordinate
 
-Read GIS Nodestring == ../../../model/gis/nodestrings/2d_ns_Cockburn_Sound_005_L.shp
+Read GIS Nodestring == ../../../model/gis/nodestrings/ns_005.shp
 
 !3D MODEL
 vertical mesh type == z 

@@ -1,6 +1,6 @@
 geometry 2D == ../../gis_repo/1_domain/mesh/Cockburn_Sound_Mesh_C_HiRes_001.2dm
 
-Read GIS Nodestring == ../../gis_repo/1_domain/nodestrings/2d_ns_Cockburn_Sound_005_L.shp
+Read GIS Nodestring == ../../gis_repo/1_domain/nodestrings/ns_005.shp
 
 !3D MODEL
 vertical mesh type == z 
