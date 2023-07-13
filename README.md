@@ -158,11 +158,37 @@ Download and install the TUFLOW-FV model and license server.
 
 - model_runs
 
-| Sub-type                | Conventions                                                            | comments                                                                                         |
-| ----------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| WQ (water quality)      | csiem\_{model generation ID}\_{mesh option}\_{model period}\_WQ.fvc    | Coupled TFV-AED model for both hydrodynamic and water quality simulations                        |
-| HD (hydrodynamics)      | csiem\_{model generation ID}\_{mesh  option}\_{model  period}\_HD.fvc  | TFV hydrodynamic model only                                                                      |
-| ST (sediment transport) | csiem\_{model generation ID}\_{mesh  option}\_{model  period}\_SED.fvc | The TFV-ST model was originally set by BMT and to be updated with corresponding file paths/names |
+| Sub-type                | Conventions                                                            | comments                                                                                                                                                                                      |
+| ----------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| WQ (water quality)      | csiem\_{model generation ID}\_{mesh option}\_{model period}\_WQ.fvc    | Main configuration file for coupled TFV-AED model, e.g. csiem_v1_B009_20130101_20131231_WQ.fvc                                                                                                |
+| HD (hydrodynamics)      | csiem\_{model generation ID}\_{mesh  option}\_{model  period}\_HD.fvc  | Main configuration file for TFV hydrodynamic model only, e.g. csiem_v1_B009_20130101_20131231_HD.fvc                                                                                          |
+| ST (sediment transport) | csiem\_{model generation ID}\_{mesh  option}\_{model  period}\_SED.fvc | Main configuration file for TFV-ST model, e.g. csiem_v1_B009_20130101_20131231_ST.fvc. Note: the TFV-ST model was originally set by BMT and to be updated with corresponding file paths/names |
+
+- includes
+
+| Sub-type                 | Conventions                                     | comments                                                                         |
+| ------------------------ | ----------------------------------------------- | -------------------------------------------------------------------------------- |
+| bc (boundary conditions) | {boundary type}_{data source}_{data period}.fvc | e.g. met_BARRA_perth_20130101_20131231.fvc                                       |
+| ic (initial condition)   | initial*conditions*{model version}.fvc          |                                                                                  |
+| domain                   | domain*config*{mesh option}\_{model type}.fvc   | e.g. domain_config_csiem_mesh_B.fvc                                              |
+| turbulence               | turbulence.fvc                                  | Include configuration for turbulence parameters                                  |
+| wq (water quality)       | AED model configuration files                   | Include configuration for AED water quality module                               |
+| output                   | output\_{output category}.fvc                   | Configuration for model outputs, e.g. output_wq.fvc                              |
+| roughness                | roughness*material*{version NO}.fvc             | Configuration for benthic roughness settings, e.g. roughness_wq_Material_011.fvc |
+
+- bc_repo
+
+| Sub-type                                 | Conventions                                                                                        | comments                                                                              |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 1_ocean (ocean boundary)                 | NetCDF: {data source}_{UTC zone}_{data period}.nc <\br> CSV: ocean*bgc*{source}\_{data period}.csv | e.g. ROMS_UTC+8_20130101_20140101_FILLED.nc<\br> ocean_bgc_IMOS_20220101_20221231.csv |
+| 2_weather (weather condition)            | {data source}_{domain}_{UTC zone}\_{data period}.nc                                                | e.g. WRF_d02_UTC+0_20220101_20230101.nc                                               |
+| 3_waves (waves inputs)                   | {data source}_{domain}_{UTC zone}\_{data period}.nc                                                | e.g. WWM_Agrid_UTC+0_20150101_20151231.nc                                             |
+| 4_sce (Swan-Canning Estuary)             | {location}_{BC type}_{ data period}\_{model type}.csv                                              | e.g. NAR_Inflow_20100101_20230101_wq.csv                                              |
+| 5_phe (Peel-Harvey Estuary)              | N/A (to be updated)                                                                                |                                                                                       |
+| 6_gw (Groundwater inputs)                | SGD*{zone id}*{data period}.csv                                                                    | e.g. SGD_zone1_1_20130101_20131231.csv                                                |
+| 7_discharges (industrial discharge)      | {data source}\_{data period}.nc                                                                    | e.g. BP_20130101_20140101_wq.csv                                                      |
+| 8_intakes (industrial intakes)           | {data source}\_{data period}.nc                                                                    | e.g. PSDP1_20130101_20140101_wq.csv                                                   |
+| 9_operations (Cockburn Sound operations) | N/A (to be updated)                                                                                |                                                                                       |
 
 ### Analysis
 
