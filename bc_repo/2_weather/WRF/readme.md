@@ -1,4 +1,4 @@
-## Cockburn Sound model : meteorological (BARRA) boundary condition files
+## Cockburn Sound model : meteorological (WRF) boundary condition files
 
 <br>
 
