@@ -8,7 +8,7 @@ The files include time-series of oxygen, nutrients and plankton specific to the 
 
 Scripts for creating the ocean BGC time-series are available within the [csiem model tools Github repo](https://github.com/AquaticEcoDynamics/csiem_model_tools/tree/main/preprocess/obc).
 
-Files in this folder include (Apr 2023):
+Files in this folder include (by Apr 2023):
 
 ```
 ocean_bgc_a_20130101_20131231.csv
