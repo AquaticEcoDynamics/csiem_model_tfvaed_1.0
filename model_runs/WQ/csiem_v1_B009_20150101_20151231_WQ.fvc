@@ -13,7 +13,6 @@
 ! AED model configuration including nutrients and five phytos    !
 !________________________________________________________________!
 
-
 ! SIMULATION HARDWARE 
 !_________________________________________________________________
  hardware == gpu
@@ -29,9 +28,10 @@ include heat == 1                                                 ! <0;1, 0;1> 0
 
 ! Turbulence CONFIGURATION
 !_________________________________________________________________
-
 include == ..\..\includes\turbulence\turbulence.fvc
 
+! Water Quality 
+!_________________________________________________________________
 water quality model == EXTERNAL
 external water quality model dir == ../../includes/wq/AED  
 
@@ -72,52 +72,41 @@ shp projection == ../../gis_repo/1_domain/projection/projection.prj
 ! GEOMETRY & DOMAIN
 !_________________________________________________________________
 echo geometry == 1
-
 include == ..\..\includes\domain\domain_config_csiem_mesh_B_budgeting.fvc
-
 
 ! BOTTOM MATERIALS
 !_________________________________________________________________
-
-Read GIS Mat == ../../gis_repo/2_benthic/materials/Cockburn_Sound_Material_011.shp
-
+Read GIS Mat == ../../gis_repo/2_benthic/materials/csiem_material_011.shp
 
 ! Bottom roughness
-
-include == ..\..\includes\sed\roughness_wq_Material_011.fvc
+include == ..\..\includes\roughness\roughness_wq_Material_011.fvc
 
 !
 !BOUNDARY CONDITIONS
 !_________________________________________________________________
 
 ! OCEAN
-
-  include == ..\..\includes\bc\1_ocean\obc_wq_20150101_20151231.fvc   ! ROMS HD plus OBC_wq from IMOS
+include == ..\..\includes\bc\1_ocean\obc_wq_20150101_20151231.fvc   ! ROMS HD plus OBC_wq from IMOS
 
 ! WEATHER
-
 include == ..\..\includes\bc\2_weather\met_BARRA_perth_20150101_20151231.fvc  ! BARRA Perth output
 
 ! WAVES
-
 include == ..\..\includes\bc\3_waves\wave_WWM_20150101_20151231.fvc   ! WWM output
 
 ! SWAN-CANNING
-
 include == ..\..\includes\bc\4_sce\Swan_river_20150101_20151231.fvc
 
 ! Groundwater
 include == ..\..\includes\bc\6_gw\groundwater_20150101_20151231.fvc 
 
 ! OUTFALLS & INTAKES 
-
 include == ..\..\includes\bc\7_discharges\discharge_20150101_20151231.fvc  
-
 include == ..\..\includes\bc\8_intakes\intake_20150101_20151231.fvc  
 
 !INITIAL CONDITIONS
 !_________________________________________________________________
-include == ..\..\includes\domain\initial_conditions_wq_tracer.fvc
+include == ..\..\includes\ic\initial_conditions_wq_tracer.fvc
 
 !OUTPUT COMMANDS
 !_________________________________________________________________

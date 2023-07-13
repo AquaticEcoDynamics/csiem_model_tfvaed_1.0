@@ -58,7 +58,7 @@
      link_solar_shade = .false.
      link_rain_loss = .false.
    !-- Benthic variable initialisation
-    init_values_file = '../../includes/wq/AED/aed_benthic_map_mesh_009.csv'
+    init_values_file = '../../gis_repo/2_benthic/ecology/aed_benthic_map_mesh_009.csv'
     !route_table_file = '../External/AED/Routing_Tbl.csv'
 /
 !###############################################################################
@@ -133,7 +133,7 @@
    active_zones     = 25             ! Refer to ../Geo/Zones.PNG
    simStaticBiomass = .true.
    simMacFeedback   = .false.
-   dbase            = '../../includes/wq/AED/aed_macrophyte_pars.nml'
+   dbase            = '../../includes/wq/AED/aed_macrophyte_pars.csv'
 /
 
 !###############################################################################
@@ -448,7 +448,7 @@
      do_uptake_target_variable   ='OXY_oxy'
      c_uptake_target_variable    =''
    !-- General options
-     dbase = '../../includes/wq/AED/aed_phyto_pars.nml'
+     dbase = '../../includes/wq/AED/aed_phyto_pars.csv'
      extra_diag = .false.
     !zerolimitfudgefactor = ??
      min_rho =  900.0
