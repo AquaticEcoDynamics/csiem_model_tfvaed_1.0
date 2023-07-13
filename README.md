@@ -146,13 +146,13 @@ Download and install the TUFLOW-FV model and license server.
 
 1. Folder structure: model files are organized in the following catogories/folders:
 
-| Folders    | comments                                                    |
-| ---------- | ----------------------------------------------------------- |
-| bc_repo    | repository for boundary condition files                     |
-| gis_repo   | repository for GIS files required by the model simulations  |
-| includes   | model configuration files for being included in simulations |
-| model_runs | main model configuration files                              |
-| outputs    | place holder for model output storage                       |
+| Folders     | Content                                                     |
+| ----------- | ----------------------------------------------------------- |
+| **bc_repo** | repository for boundary condition files                     |
+| gis_repo    | repository for GIS files required by the model simulations  |
+| includes    | model configuration files for being included in simulations |
+| model_runs  | main model configuration files                              |
+| outputs     | place holder for model output storage                       |
 
 ### Analysis
 
