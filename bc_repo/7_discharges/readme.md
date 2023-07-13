@@ -1,10 +1,10 @@
-## Cockburn Sound model : industrial intake boundary condition files
+## Cockburn Sound model : industrial discharge boundary condition files
 
 <br>
 
-This folder contains the boundary condition for industrial intakes, previously compiled by BMT, and processed for use by the TUFLOW-FV Cockburn Sound model.
+This folder contains the boundary condition for industrial discharges, previously compiled by BMT, and processed for use by the TUFLOW-FV Cockburn Sound model.
 
-Files in this folder include intakes data from agencies of (by Apr 2023): 
+Files in this folder include discharge data from agencies of (by Apr 2023):
 
 ```
 BP
