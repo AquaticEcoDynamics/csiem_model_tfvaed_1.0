@@ -7,9 +7,12 @@ This folder contains the boundary condition for KPS industrial discharges, previ
 Files in this folder include (by Apr 2023):
 
 ```
-BP_20130101_20140101_wq.csv
-BP_20150101_20160101_wq.csv
-BP_20220101_20230101_wq.csv
+KPS_A_B_20130101_20140101_wq.csv
+KPS_A_B_20150101_20160101_wq.csv
+KPS_A_B_20220101_20230101_wq.csv
+KPS_C_CPS_20130101_20140101_wq.csv
+KPS_C_CPS_20150101_20160101_wq.csv
+KPS_C_CPS_20220101_20230101_wq.csv
 ```
 
 These files are not stored in GitHub and can be accessed from the CSIEM model archive on Pawsey:
