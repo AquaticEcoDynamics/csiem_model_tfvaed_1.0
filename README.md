@@ -154,15 +154,15 @@ Download and install the TUFLOW-FV model and license server.
 | **model_runs** | main model configuration files                              |
 | **outputs**    | place holder for model output storage                       |
 
-1. File naming convention: model files are named using the following conventions:
+2. File naming convention: model files are named using the following conventions:
 
 - model_runs
 
-| Sub-type                | Conventions                                                      | comments                                                                                         |
-| ----------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| WQ (water quality)      | csiem*{model generation ID}*{mesh option}\_{model period}\_WQ    | Coupled TFV-AED model for both hydrodynamic and water quality simulations                        |
-| HD (hydrodynamics)      | csiem*{model generation ID}*{mesh  option}\_{model  period}\_HD  | TFV hydrodynamic model only                                                                      |
-| ST (sediment transport) | csiem*{model generation ID}*{mesh  option}\_{model  period}\_SED | The TFV-ST model was originally set by BMT and to be updated with corresponding file paths/names |
+| Sub-type                | Conventions                                                            | comments                                                                                         |
+| ----------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| WQ (water quality)      | csiem\_{model generation ID}\_{mesh option}\_{model period}\_WQ.fvc    | Coupled TFV-AED model for both hydrodynamic and water quality simulations                        |
+| HD (hydrodynamics)      | csiem\_{model generation ID}\_{mesh  option}\_{model  period}\_HD.fvc  | TFV hydrodynamic model only                                                                      |
+| ST (sediment transport) | csiem\_{model generation ID}\_{mesh  option}\_{model  period}\_SED.fvc | The TFV-ST model was originally set by BMT and to be updated with corresponding file paths/names |
 
 ### Analysis
 
