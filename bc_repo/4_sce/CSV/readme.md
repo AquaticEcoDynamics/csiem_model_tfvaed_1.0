@@ -2,7 +2,7 @@
 
 <br>
 
-This folder contains the boundary condition for Swan-Canning Estuary inflows and water quality (for Upper Swan inflows through Narrows Bridge and Canning river inflows), and processed for use by the TUFLOW-FV Cockburn Sound model.
+This folder contains the boundary condition for Swan-Canning Estuary inflows and water quality (for Upper Swan inflows through Narrows Bridge and Canning river inflows, interpolated from nearby tidal gauge and water quality monitoring), and processed for use by the TUFLOW-FV Cockburn Sound model.
 
 Files in this folder include (by Apr 2023):
 
