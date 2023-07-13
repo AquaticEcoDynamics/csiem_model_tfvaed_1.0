@@ -16,8 +16,6 @@ ocean_bgc_a_20150101_20151231.csv
 ocean_bgc_IMOS_20220101_20221231.csv
 ```
 
-(was CS_obc_WQ_NS3_20130101_20131231)
-
 These files are not stored in GitHub and can be accessed from the CSIEM model archive on Pawsey:
 
 ```
