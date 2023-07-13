@@ -2,7 +2,7 @@
 
 <br>
 
-This folder contains the node-string shape filesfor the TUFLOW-FV Cockburn Sound model.
+This folder contains the node-string shape files for the TUFLOW-FV Cockburn Sound model.
 
 Files in this folder include options of (by Apr 2023):
 
