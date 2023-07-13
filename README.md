@@ -169,7 +169,7 @@ Download and install the TUFLOW-FV model and license server.
 | Sub-type                 | Conventions                                       | comments                                                                         |
 | ------------------------ | ------------------------------------------------- | -------------------------------------------------------------------------------- |
 | bc (boundary conditions) | {boundary type}\_{data source}\_{data period}.fvc | e.g. met_BARRA_perth_20130101_20131231.fvc                                       |
-| ic (initial condition)   | initial_conditions\_{model version}.fvc           |                                                                                  |
+| ic (initial condition)   | initial_conditions\_{model version}.fvc           | e.g. initial_conditions_wq.fvc                                                   |
 | domain                   | domain_config\_{mesh option}\_{model type}.fvc    | e.g. domain_config_csiem_mesh_B.fvc                                              |
 | turbulence               | turbulence.fvc                                    | Include configuration for turbulence parameters                                  |
 | wq (water quality)       | AED model configuration files                     | Include configuration for AED water quality module                               |
@@ -178,17 +178,26 @@ Download and install the TUFLOW-FV model and license server.
 
 - bc_repo
 
-| Sub-type                                 | Conventions                                                                                           | comments                                                                             |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| 1_ocean (ocean boundary)                 | NetCDF: {data source}\_{UTC zone}\_{data period}.nc <br> CSV: ocean\*bgc\_{source}\_{data period}.csv | e.g. ROMS_UTC+8_20130101_20140101_FILLED.nc<br> ocean_bgc_IMOS_20220101_20221231.csv |
-| 2_weather (weather condition)            | {data source}\_{domain}\_{UTC zone}\_{data period}.nc                                                 | e.g. WRF_d02_UTC+0_20220101_20230101.nc                                              |
-| 3_waves (waves inputs)                   | {data source}\_{domain}\_{UTC zone}\_{data period}.nc                                                 | e.g. WWM_Agrid_UTC+0_20150101_20151231.nc                                            |
-| 4_sce (Swan-Canning Estuary)             | {location}\_{BC type}\_{ data period}\_{model type}.csv                                               | e.g. NAR_Inflow_20100101_20230101_wq.csv                                             |
-| 5_phe (Peel-Harvey Estuary)              | N/A (to be updated)                                                                                   |                                                                                      |
-| 6_gw (Groundwater inputs)                | SGD\_{zone id}\_{data period}.csv                                                                     | e.g. SGD_zone1_1_20130101_20131231.csv                                               |
-| 7_discharges (industrial discharge)      | {data source}\_{data period}.nc                                                                       | e.g. BP_20130101_20140101_wq.csv                                                     |
-| 8_intakes (industrial intakes)           | {data source}\_{data period}.nc                                                                       | e.g. PSDP1_20130101_20140101_wq.csv                                                  |
-| 9_operations (Cockburn Sound operations) | N/A (to be updated)                                                                                   |                                                                                      |
+| Sub-type                                 | Conventions                                                                                              | comments                                                                             |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| 1_ocean (ocean boundary)                 | - NetCDF: {data source}\_{UTC zone}\_{data period}.nc <br> - CSV: ocean_bgc\_{source}\_{data period}.csv | e.g. ROMS_UTC+8_20130101_20140101_FILLED.nc<br> ocean_bgc_IMOS_20220101_20221231.csv |
+| 2_weather (weather condition)            | {data source}\_{domain}\_{UTC zone}\_{data period}.nc                                                    | e.g. WRF_d02_UTC+0_20220101_20230101.nc                                              |
+| 3_waves (waves inputs)                   | {data source}\_{domain}\_{UTC zone}\_{data period}.nc                                                    | e.g. WWM_Agrid_UTC+0_20150101_20151231.nc                                            |
+| 4_sce (Swan-Canning Estuary)             | {location}\_{BC type}\_{ data period}\_{model type}.csv                                                  | e.g. NAR_Inflow_20100101_20230101_wq.csv                                             |
+| 5_phe (Peel-Harvey Estuary)              | N/A (to be updated)                                                                                      |                                                                                      |
+| 6_gw (Groundwater inputs)                | SGD\_{zone id}\_{data period}.csv                                                                        | e.g. SGD_zone1_1_20130101_20131231.csv                                               |
+| 7_discharges (industrial discharge)      | {data source}\_{data period}.nc                                                                          | e.g. BP_20130101_20140101_wq.csv                                                     |
+| 8_intakes (industrial intakes)           | {data source}\_{data period}.nc                                                                          | e.g. PSDP1_20130101_20140101_wq.csv                                                  |
+| 9_operations (Cockburn Sound operations) | N/A (to be updated)                                                                                      |                                                                                      |
+
+- gis_repo
+
+| Sub-type                                         | Conventions                                         | comments                             |
+| ------------------------------------------------ | --------------------------------------------------- | ------------------------------------ |
+| 1_domain (GIS files for model domain)            | csiem*mesh*{mesh option }_{version ID}_{resolution} | e.g. csiem_mesh_B009_opt.2dm         |
+| 2_benthic (GIS files for benthic conditions)     | csiem*{benthic type}*{version ID}                   | e.g. Cockburn_Sound_Material_011.shp |
+| 3_output (GIS files for output definition)       | extraction_point.csv                                |                                      |
+| 4_gw (GIS files for defining groundwater inputs) | groundwater*zones*{version NO}                      | e.g. groundwater_zones_v2.shp        |
 
 ### Analysis
 
