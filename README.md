@@ -146,13 +146,23 @@ Download and install the TUFLOW-FV model and license server.
 
 1. Folder structure: model files are organized in the following catogories/folders:
 
-| Folders     | Content                                                     |
-| ----------- | ----------------------------------------------------------- |
-| **bc_repo** | repository for boundary condition files                     |
-| gis_repo    | repository for GIS files required by the model simulations  |
-| includes    | model configuration files for being included in simulations |
-| model_runs  | main model configuration files                              |
-| outputs     | place holder for model output storage                       |
+| Folders        | Content                                                     |
+| -------------- | ----------------------------------------------------------- |
+| **bc_repo**    | repository for boundary condition files                     |
+| **gis_repo**   | repository for GIS files required by the model simulations  |
+| **includes**   | model configuration files for being included in simulations |
+| **model_runs** | main model configuration files                              |
+| **outputs**    | place holder for model output storage                       |
+
+1. File naming convention: model files are named using the following conventions:
+
+- model_runs
+
+| Sub-type                | Conventions                                                      | comments                                                                                         |
+| ----------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| WQ (water quality)      | csiem*{model generation ID}*{mesh option}\_{model period}\_WQ    | Coupled TFV-AED model for both hydrodynamic and water quality simulations                        |
+| HD (hydrodynamics)      | csiem*{model generation ID}*{mesh  option}\_{model  period}\_HD  | TFV hydrodynamic model only                                                                      |
+| ST (sediment transport) | csiem*{model generation ID}*{mesh  option}\_{model  period}\_SED | The TFV-ST model was originally set by BMT and to be updated with corresponding file paths/names |
 
 ### Analysis
 
