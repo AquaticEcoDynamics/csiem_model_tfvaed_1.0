@@ -114,17 +114,9 @@ This repository contains model files that can be run locally on Windows or Linux
 
 This repository includes the model files required for a TUFLOW-FV - AED simulation run. Running the setup contained herein requires users to have an active TUFLOW-FV license with the AED [pre-compiled plugin](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html).
 
-Download and install the TUFLOW-FV model and license server.
+- Download and install the TUFLOW-FV model and license server from [WBM BMT](https://www.tuflow.com/products/tuflow-fv/).
 
-- tuflow-fv
-  ```sh
-  ......
-  ```
-  Download and install the compatible AED model plugin (FV-AED).
-- fv-aed
-  ```sh
-  ......
-  ```
+- Download and install the compatible AED model plugin (FV-AED) from [the UWA-AED website](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html).
 
 ### Installation
 
