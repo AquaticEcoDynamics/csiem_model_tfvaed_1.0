@@ -1,1 +1,1 @@
-Blank file for github repo syncing
+A place holder for ERA5 climate products, which is the latest climate reanalysis produced by ECMWF, providing hourly data on many atmospheric, land-surface and sea-state parameters together with estimates of uncertainty.

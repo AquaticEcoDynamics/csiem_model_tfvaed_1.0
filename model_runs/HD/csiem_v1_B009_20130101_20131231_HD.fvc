@@ -2,7 +2,7 @@
 !                                                                !
 ! COCKBURN SOUND INTEGRATED ECOSYSTEM MODEL (CSIEM)              !
 !                                                                !
-! CSIEM 3D Hydrodynamic-Biogeochemical simulation                !
+! CSIEM 3D Hydrodynamic simulation                               !
 !                                                                !
 ! TUFLOW-FV Configuration File                                   !
 !                                                                !
@@ -11,7 +11,6 @@
 !                                                                !
 ! This simulation focus: Jan-Dec 2013 period with HD             !                        
 !________________________________________________________________!
-
 
 ! SIMULATION HARDWARE 
 !_________________________________________________________________
@@ -28,12 +27,7 @@ include heat == 1                                                 ! <0;1, 0;1> 0
 
 ! Turbulence CONFIGURATION
 !_________________________________________________________________
-
 include == ..\..\includes\turbulence\turbulence.fvc
-
-
-!water quality model == EXTERNAL
-!external water quality model dir == ../../includes/wq/AED  
 
 ! TIME COMMANDS
 !_________________________________________________________________
@@ -67,64 +61,53 @@ global vertical scalar diffusivity limits == 0.0, 1.0
 ! GIS PROJECTION
 !_________________________________________________________________
 GIS format == shp
-shp projection == ../../gis_repo/1_domain/projection/projection.prj
+shp projection == ..\..\gis_repo\1_domain\projection\projection.prj
  
 ! GEOMETRY & DOMAIN
 !_________________________________________________________________
 echo geometry == 1
-
 include == ..\..\includes\domain\domain_config_csiem_mesh_B_budgeting.fvc
-
 
 ! BOTTOM MATERIALS
 !_________________________________________________________________
-
-Read GIS Mat == ../../gis_repo/2_benthic/materials/Cockburn_Sound_Material_011.shp
-
+Read GIS Mat == ..\..\gis_repo\2_benthic\materials\csiem_material_011.shp
 
 ! Bottom roughness
-
-include == ..\..\includes\sed\roughness_wq_Material_011.fvc
+include == ..\..\includes\roughness\roughness_wq_Material_011.fvc
 
 !
 !BOUNDARY CONDITIONS
 !_________________________________________________________________
 
 ! OCEAN
-
-  include == ..\..\includes\bc\1_ocean\obc_wq_20130101_20131231_WQ008_tracer.fvc   ! ROMS HD plus OBC_wq from IMOS
+include == ..\..\includes\bc\1_ocean\obc_wq_20130101_20131231.fvc   ! ROMS HD plus OBC_wq from IMOS
 
 ! WEATHER
-
-include == ..\..\includes\bc\2_weather\met_BARRA_regional_20130101_20131231.fvc  ! BARRA regional output
+include == ..\..\includes\bc\2_weather\met_BARRA_perth_20130101_20131231.fvc  ! BARRA regional output
 
 ! WAVES
-
-include == ..\..\includes\bc\3_waves\wave_SWAN_20130101_20131231_v3.fvc   ! WWM output
+include == ..\..\includes\bc\3_waves\wave_SWAN_20130101_20131231.fvc   ! WWM output
 
 ! SWAN-CANNING
-
-include == ..\..\includes\bc\4_sce\Swan_river_20120315_20140331_wq_v2_tracer.fvc
-
-! OUTFALLS & INTAKES 
-
-include == ..\..\includes\bc\7_discharges\Discharge_and_Intake_20130101_20140101_tracer.fvc  
+include == ..\..\includes\bc\4_sce\Swan_river_20130101_20131231.fvc
 
 ! Groundwater
-include == ..\..\includes\bc\6_gw\groundwater_2013.fvc 
+include == ..\..\includes\bc\6_gw\groundwater_20130101_20131231.fvc 
+
+! OUTFALLS & INTAKES 
+include == ..\..\includes\bc\7_discharges\discharge_20130101_20131231.fvc  
+include == ..\..\includes\bc\8_intakes\intake_20130101_20131231.fvc  
 
 !INITIAL CONDITIONS
 !_________________________________________________________________
-include == ..\..\includes\domain\initial_conditions_wq_tracer.fvc
+include == ..\..\includes\ic\initial_conditions_wq_tracer.fvc
 
 !OUTPUT COMMANDS
 !_________________________________________________________________
-
-! Makesure to have the correct folder path
-include == ..\..\includes\output\output_hd.fvc
+! include == ..\..\includes\output\output_wq.fvc
 include == ..\..\includes\output\output_met.fvc
 include == ..\..\includes\output\output_wave.fvc
-! include == ..\..\includes\output\output_trc.fvc
+include == ..\..\includes\output\output_trc.fvc
 
 write restart dt == 24
 

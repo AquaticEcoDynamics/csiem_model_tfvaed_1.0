@@ -1,8 +1,8 @@
-## Cockburn Sound model : meteorological (BARRA) boundary condition files 
+## Cockburn Sound model : meteorological (BARRA) boundary condition files
 
 <br>
 
-This folder contains the outputs from the BARRA weather reanalysis dataset, processed for use by the TUFLOW-FV Cockburn Sound model. For more information about this data set please refer to the [Bureau of Meteorology's BARRA Reanalysis](https://aquaticecodynamics.github.io/csiem-science/) page.
+This folder contains the outputs from the BARRA weather reanalysis dataset, processed for use by the TUFLOW-FV Cockburn Sound model. For more information about this data set please refer to the [Bureau of Meteorology's BARRA Reanalysis](https://http://www.bom.gov.au/research/projects/reanalysis/) page.
 
 The files include weather variables specific to the CSIEM model domain.
 
@@ -23,8 +23,8 @@ BARRA_PH_UTC+8_20150101_20151231.nc
 
 Note that two resolutions are available and processed and csiem used the `BARRA_PH` outputs:
 
- - BARRA_R (12km resolution over Australia, New-Zealand and the maritime continent) for the period 1990-01-01 to 2019-02-28
- - BARRA_PH (1.5km resolution over South-West WA) for the period 1990-01-01 to 2019-02-28
+- BARRA_R (12km resolution over Australia, New-Zealand and the maritime continent) for the period 1990-01-01 to 2019-02-28
+- BARRA_PH (1.5km resolution over South-West WA) for the period 1990-01-01 to 2019-02-28
 
 These files are not stored in GitHub and can be accessed from the CSIEM model archive on Pawsey:
 

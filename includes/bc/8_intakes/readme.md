@@ -1,1 +1,4 @@
-Configuration instructions for TUFLOW-FV simulation
+## Cockburn Sound model : boundary condition includes files
+
+<br>
+Configuration instructions for industrial intakes of TUFLOW-FV simulation

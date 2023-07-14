@@ -2,7 +2,7 @@
 !                                                                !
 ! COCKBURN SOUND INTEGRATED ECOSYSTEM MODEL (CSIEM)              !
 !                                                                !
-! CSIEM 3D Hydrodynamic-Biogeochemical simulation                !
+! CSIEM 3D Hydrodynamic simulation                               !
 !                                                                !
 ! TUFLOW-FV Configuration File                                   !
 !                                                                !
@@ -11,8 +11,6 @@
 !                                                                !
 ! This simulation focus: Jan-Dec 2022 period with HD             !                        
 !________________________________________________________________!
-
-
 
 ! SIMULATION HARDWARE 
 !_________________________________________________________________
@@ -29,12 +27,7 @@ include heat == 1                                                 ! <0;1, 0;1> 0
 
 ! Turbulence CONFIGURATION
 !_________________________________________________________________
-
 include == ..\..\includes\turbulence\turbulence.fvc
-
-
-!water quality model == EXTERNAL
-!external water quality model dir == ../../includes/wq/AED  
 
 ! TIME COMMANDS
 !_________________________________________________________________
@@ -73,59 +66,50 @@ shp projection == ../../gis_repo/1_domain/projection/projection.prj
 ! GEOMETRY & DOMAIN
 !_________________________________________________________________
 echo geometry == 1
-
 include == ..\..\includes\domain\domain_config_csiem_mesh_B_budgeting.fvc
-
 
 ! BOTTOM MATERIALS
 !_________________________________________________________________
-
-Read GIS Mat == ../../gis_repo/2_benthic/materials/Cockburn_Sound_Material_011.shp
-
+Read GIS Mat == ../../gis_repo/2_benthic/materials/csiem_material_011.shp
 
 ! Bottom roughness
-
-include == ..\..\includes\sed\roughness_wq_Material_011.fvc
+include == ..\..\includes\roughness\roughness_wq_Material_011.fvc
 
 !
 !BOUNDARY CONDITIONS
 !_________________________________________________________________
 
 ! OCEAN
-
-  include == ..\..\includes\bc\1_ocean\obc_wq_20220101_20221231_WQ008_tracer_IMOS.fvc   ! ROMS HD plus OBC_wq from IMOS
+include == ..\..\includes\bc\1_ocean\obc_wq_20220101_20221231.fvc   ! ROMS HD plus OBC_wq from IMOS
 
 ! WEATHER
-
-include == ..\..\includes\bc\2_weather\met_WRF_20220101_20221231.fvc  ! WRF output
+include == ..\..\includes\bc\2_weather\met_WRF_d02_20220101_20221231.fvc  ! WRF output
 
 ! WAVES
-
 include == ..\..\includes\bc\3_waves\wave_WWM_20220101_20221231.fvc   ! WWM output
 
 ! SWAN-CANNING
-
-include == ..\..\includes\bc\4_sce\Swan_river_20220101_20221231_H.fvc
-
-! OUTFALLS & INTAKES 
-
-include == ..\..\includes\bc\7_discharges\Discharge_and_Intake_20220101_20230101_tracer.fvc  
+include == ..\..\includes\bc\4_sce\Swan_river_20220101_20221231.fvc
 
 ! Groundwater
-include == ..\..\includes\bc\6_gw\groundwater_2022.fvc 
+include == ..\..\includes\bc\6_gw\groundwater_20220101_20221231.fvc 
+
+! OUTFALLS & INTAKES 
+include == ..\..\includes\bc\7_discharges\discharge_20220101_20221231.fvc  
+include == ..\..\includes\bc\8_intakes\intake_20220101_20221231.fvc  
 
 !INITIAL CONDITIONS
 !_________________________________________________________________
-include == ..\..\includes\domain\initial_conditions_wq_tracer.fvc
+include == ..\..\includes\ic\initial_conditions_wq_tracer.fvc
 
 !OUTPUT COMMANDS
 !_________________________________________________________________
 
 ! Makesure to have the correct folder path
-include == ..\..\includes\output\output_hd.fvc
+! include == ..\..\includes\output\output_wq.fvc
 include == ..\..\includes\output\output_met.fvc
 include == ..\..\includes\output\output_wave.fvc
-! include == ..\..\includes\output\output_trc.fvc
+include == ..\..\includes\output\output_trc.fvc
 
 write restart dt == 24
 
