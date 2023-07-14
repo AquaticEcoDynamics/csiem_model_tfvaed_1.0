@@ -1,12 +1,12 @@
 !  ROMS data
-grid definition file == ../../../bc_repo/1_ocean/ROMS/ROMS_UTC+8_20130101_20140101_FILLED.nc
+grid definition file == ../../../bc_repo/1_ocean/ROMS/ROMS_UTC+8_20130101_20140101.nc
 grid definition variables == lon, lat, depth
 vertical coordinate type == depth
 grid definition label == roms
 boundary grid map == 1
 end grid
 
-bc == OBC_GRID, roms, ../../../bc_repo/1_ocean/ROMS/ROMS_UTC+8_20130101_20140101_FILLED.nc
+bc == OBC_GRID, roms, ../../../bc_repo/1_ocean/ROMS/ROMS_UTC+8_20130101_20140101.nc
   sub-type == 6
   bc header == time,surf_el,water_u,water_v,salinity,water_temp 
   bc nodestrings == 1
