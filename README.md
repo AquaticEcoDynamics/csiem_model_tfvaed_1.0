@@ -126,10 +126,12 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
    Linux: git clone https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0.git
    Windows: use Github Destop to clone or download ZIP at the Github website
    ```
-2. Clone the `bc_repo` folder. For Linux users, copy the fetch_csiem.sh shell file from the Github [csiem_model_tools](https://github.com/AquaticEcoDynamics/csiem_model_tools/blob/main/fetch/fetch_csiem.sh) repository. Then fetch the `bc_repo` as:
+2. Clone the complete model files including `bc_repo` folder. For Linux users, copy the fetch_csiem.sh shell file from the Github [csiem_model_tools](https://github.com/AquaticEcoDynamics/csiem_model_tools/blob/main/fetch/fetch_csiem.sh) repository. Then fetch the `bc_repo` as:
    ```sh
    ./fetch_csiem.sh 1.0
    ```
+   The above fetch commend will download all the model files including the bc_repo;
+   
    Windows users can do a direct download on the [Pawsey WAMSI folder](s3://wamsi-westport-project-1/csiem-model).
 3. Go to the main model run directory, and execute model as:
    ```sh
@@ -257,7 +259,7 @@ Distributed under the --- License. See `LICENSE.txt` for more information.
 
 Matt Hipsey: [@matthipsey](https://twitter.com/matthipsey) - matt.hipsey@uwa.edu.au
 
-Project Link: [csiem_model](https://github.com/AquaticEcoDynamics/csiem_model)
+Project Link: [csiem_model](https://aquaticecodynamics.github.io/csiem-science/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -265,10 +267,10 @@ Project Link: [csiem_model](https://github.com/AquaticEcoDynamics/csiem_model)
 
 ## Acknowledgments
 
-- Funding from the [WAMSI Westport Research Program]()
-- Gayan Gunaratne, Louise Bruce and the [BMT]() software team
-- Brendan Busch & Peisheng Huang from the [AED]() research group
-- Oceanographic models from Ivica Janeković & Chari Pattiaratchi from the [UWA Oceans Institute]()
+- Funding from the [WAMSI Westport Research Program](https://wamsi.org.au/research/programs/wamsi-westport-marine-science-program/)
+- Gayan Gunaratne, Louise Bruce and the [BMT](https://www.tuflow.com/) software team
+- Brendan Busch & Peisheng Huang from the [AED](https://aed.see.uwa.edu.au/) research group
+- Oceanographic models from Ivica Janeković & Chari Pattiaratchi from the [UWA Oceans Institute](https://www.uwa.edu.au/oceans-institute)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
