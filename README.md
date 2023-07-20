@@ -133,7 +133,6 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
    Windows users can do a direct download on the [Pawsey WAMSI folder](s3://wamsi-westport-project-1/csiem-model).
 3. Go to the main model run directory, and execute model as:
    ```sh
-   cd model_runs/
    {tfv_aed binary} {csiem model tfvaed 1.0 main configuration}.fvc
    ```
 
@@ -189,10 +188,10 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
 
 | Sub-type                                         | Conventions                                         | comments                             |
 | ------------------------------------------------ | --------------------------------------------------- | ------------------------------------ |
-| 1_domain (GIS files for model domain)            | csiem*mesh*{mesh option }_{version ID}_{resolution} | e.g. csiem_mesh_B009_opt.2dm         |
-| 2_benthic (GIS files for benthic conditions)     | csiem*{benthic type}*{version ID}                   | e.g. Cockburn_Sound_Material_011.shp |
+| 1_domain (GIS files for model domain)            | csiem\_mesh\_{mesh option}\_{version ID}\_{resolution} | e.g. csiem_mesh_B009_opt.2dm         |
+| 2_benthic (GIS files for benthic conditions)     | csiem\_{benthic type}\_{version ID}                   | e.g. Cockburn_Sound_Material_011.shp |
 | 3_output (GIS files for output definition)       | extraction_point.csv                                |                                      |
-| 4_gw (GIS files for defining groundwater inputs) | groundwater*zones*{version NO}                      | e.g. groundwater_zones_v2.shp        |
+| 4_gw (GIS files for defining groundwater inputs) | groundwater\_zones\_{version NO}                      | e.g. groundwater_zones_v2.shp        |
 
 ### Analysis
 
