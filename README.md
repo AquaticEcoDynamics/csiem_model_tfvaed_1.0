@@ -108,7 +108,7 @@ The model uses the [TUFLOW-FV](https://www.tuflow.com/products/tuflow-fv/) 3D fi
 
 <br>
 
-This repository contains model files (except the `bc_repo`) that are version controlled can be run locally on Windows or Linux. The `bc_repo` contains boundary conditions files that the sizes are too large to be stored at Github, 
+This repository contains model files (except the `bc_repo`) that are version-controlled can be run locally on Windows or Linux. The `bc_repo` contains boundary conditions files that the sizes are too large to be stored at Github, 
 therefore they are stored on Pawsey WAMSI project folder and can be accessed by direct download or a `fetch` method (see below). To get a local copy up and running follow these steps.
 
 ### Prerequisites
@@ -124,11 +124,10 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
 1. Clone the repo
    ```sh
    on linux: git clone https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0.git
-   on windows: go to https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0, then use Github Destop to clone or download ZIP at the Github website
+   on windows: go to https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0, use Github Destop to clone or download ZIP at the Github website
    ```
-2. Fetch the dependent NetCDF files required as boundary conditions (the `bc_repo`)
+2. copy the fetch_csiem.sh shell file from the Github [csiem_model_tools](https://github.com/AquaticEcoDynamics/csiem_model_tools/blob/main/fetch/fetch_csiem.sh) repository. Then fetch the dependent NetCDF files required as boundary conditions (the `bc_repo`)
    ```sh
-   copy the fetch_csiem.sh shell file from the Github [csiem_model_tools](https://github.com/AquaticEcoDynamics/csiem_model_tools/blob/main/fetch/fetch_csiem.sh) repository. 
    ./fetch_csiem.sh 1.0
    ```
 3. Enter the main model run directory, and execute model
