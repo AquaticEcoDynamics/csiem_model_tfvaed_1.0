@@ -107,9 +107,10 @@ include == ..\..\includes\ic\initial_conditions_wq_tracer.fvc
 
 ! Makesure to have the correct folder path
 ! include == ..\..\includes\output\output_wq.fvc
+include == ..\..\includes\output\output_hd.fvc
 include == ..\..\includes\output\output_met.fvc
 include == ..\..\includes\output\output_wave.fvc
-include == ..\..\includes\output\output_trc.fvc
+!include == ..\..\includes\output\output_trc.fvc
 
 write restart dt == 24
 
