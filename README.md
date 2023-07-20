@@ -113,7 +113,7 @@ therefore they are stored on Pawsey WAMSI project folder and can be accessed by 
 
 ### Prerequisites
 
-This repository includes the model files required for a TUFLOW-FV - AED simulation run. Running the setup contained herein requires users to have an active TUFLOW-FV license with the AED pre-compiled plugin.
+Running the model contained herein requires users to have an active TUFLOW-FV binary and license with the AED pre-compiled plugin.
 
 - Download and install the TUFLOW-FV model and license server from [WBM BMT](https://www.tuflow.com/products/tuflow-fv/).
 
@@ -132,7 +132,6 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
    ```
    The above fetch commend will download all the model files including the bc_repo;
    
-   Windows users can do a direct download on the [Pawsey WAMSI folder](s3://wamsi-westport-project-1/csiem-model).
 3. Go to the main model run directory, and execute model as:
    ```sh
    {tfv_aed binary} {csiem model tfvaed 1.0 main configuration}.fvc
