@@ -121,15 +121,16 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
 
 ### Cloning and executing the model
 
-1. Clone the repo
+1. Clone the current csiem_model_tfvaed_1.0 repo
    ```sh
-   on linux: git clone https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0.git
-   on windows: go to https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0, use Github Destop to clone or download ZIP at the Github website
+   Linux: git clone https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0.git
+   Windows: use Github Destop to clone or download ZIP at the Github website
    ```
-2. copy the fetch_csiem.sh shell file from the Github [csiem_model_tools](https://github.com/AquaticEcoDynamics/csiem_model_tools/blob/main/fetch/fetch_csiem.sh) repository. Then fetch the dependent NetCDF files required as boundary conditions (the `bc_repo`)
+2. Clone the `bc_repo` folder. For Linux users, copy the fetch_csiem.sh shell file from the Github [csiem_model_tools](https://github.com/AquaticEcoDynamics/csiem_model_tools/blob/main/fetch/fetch_csiem.sh) repository. Then fetch the `bc_repo` as:
    ```sh
    ./fetch_csiem.sh 1.0
    ```
+   Windows users can do a direct download on the [Pawsey WAMSI folder](s3://wamsi-westport-project-1/csiem-model).
 3. Enter the main model run directory, and execute model
    ```sh
    cd model_runs/
