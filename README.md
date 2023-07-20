@@ -85,8 +85,8 @@ The model uses the [TUFLOW-FV](https://www.tuflow.com/products/tuflow-fv/) 3D fi
 
 <br>
 
-[![TUFLOW-FV](https://img.shields.io/badge/TUFLOW--FV-2020.008-yellow)](https://tuflow.com/products/tuflow-fv/)
-[![AED](https://img.shields.io/badge/AED-2.0.5-brightgreen)](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html)
+[![TUFLOW-FV](https://img.shields.io/badge/TUFLOW--FV-2023.0.0-yellow)](https://tuflow.com/products/tuflow-fv/)
+[![AED](https://img.shields.io/badge/AED-2.2.4-brightgreen)](https://aquatic.science.uwa.edu.au/research/models/AED/quickstart.html)
 
 <!--
 * [![Next][Next.js]][Next-url]
