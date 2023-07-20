@@ -130,7 +130,7 @@ Running the model contained herein requires users to have an active TUFLOW-FV bi
    ```sh
    ./fetch_csiem.sh 1.0
    ```
-   The above fetch commend will download all the model files including the bc_repo;
+   The above fetch command will download all the model files including the bc_repo;
    
 3. Go to the main model run directory, and execute model as:
    ```sh
@@ -258,7 +258,7 @@ Distributed under the --- License. See `LICENSE.txt` for more information.
 
 Matt Hipsey: [@matthipsey](https://twitter.com/matthipsey) - matt.hipsey@uwa.edu.au
 
-Project Link: [csiem_model](https://aquaticecodynamics.github.io/csiem-science/)
+Project Link: [csiem online manual](https://aquaticecodynamics.github.io/csiem-science/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
