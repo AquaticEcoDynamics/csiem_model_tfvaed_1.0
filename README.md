@@ -131,10 +131,10 @@ This repository includes the model files required for a TUFLOW-FV - AED simulati
    ./fetch_csiem.sh 1.0
    ```
    Windows users can do a direct download on the [Pawsey WAMSI folder](s3://wamsi-westport-project-1/csiem-model).
-3. Enter the main model run directory, and execute model
+3. Go to the main model run directory, and execute model as:
    ```sh
    cd model_runs/
-   /opt/bin/tfv_aed csiem_100_A_20130101_20130601_WQ_009.fvc
+   {tfv_aed binary} {csiem model tfvaed 1.0 main configuration}.fvc
    ```
 
 ### Folder structure and file naming conventions
