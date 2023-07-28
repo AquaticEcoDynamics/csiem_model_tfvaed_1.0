@@ -129,8 +129,8 @@
 &aed_macrophyte
    num_mphy         = 1
    the_mphy         = 3
-   n_zones          = 1
-   active_zones     = 25             ! Refer to ../Geo/Zones.PNG
+   n_zones          = 18
+   active_zones     = 16, 51,	57,	21,	22,	23,	24,	25,	26,	27,	11,	58,	53,	55,	59,	56,	52,	50             ! Refer to ../Geo/Zones.PNG
    simStaticBiomass = .true.
    simMacFeedback   = .false.
    dbase            = '../../includes/wq/AED/aed_macrophyte_pars.csv'
