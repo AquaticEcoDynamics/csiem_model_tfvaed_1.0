@@ -21,4 +21,4 @@ UWA produced high resolution grid for testing and runtime improvement.
 
 UWA produced low resolution grid for testing and runtime improvement.
 
-![3 Panel Grids](https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0/assets/19967037/098a8de7-9f31-4009-a527-a6d3b2f78133)
+![3 Panel Grids](https://github.com/AquaticEcoDynamics/csiem_model_tfvaed_1.0/assets/19967037/b0abe3b5-c687-4e37-8f0a-6b9b6ec9fc00)
