@@ -79,10 +79,10 @@
 !
 !-------------------------------------------------------------------------------
 &aed_models
-    models =  'aed_sedflux',
-              'aed_macrophyte',
-              'aed_noncohesive',
-              'aed_oxygen',
+    models =  'aed_oxygen',
+!              'aed_macrophyte',
+!              'aed_noncohesive',
+!              'aed_oxygen',
 !             !'aed_carbon',
 !              !'aed_silica',
 !              'aed_nitrogen',
