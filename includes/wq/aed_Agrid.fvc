@@ -1,4 +1,4 @@
 ! Water Quality configuration
 !_________________________________________________________________
 water quality model == EXTERNAL
-external water quality model dir == ../../../includes/wq/AED_Bgrid
+external water quality model dir == ../../includes/wq/AED_Agrid

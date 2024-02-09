@@ -34,7 +34,7 @@ include == ..\..\includes\turbulence\turbulence.fvc
 !_________________________________________________________________
 water quality model == EXTERNAL
 !external water quality model dir == ../../includes/wq/AED  
-include == ../../includes/wq/AED_Bgrid/aed_Bgrid.fvc
+include == ../../includes/wq/aed_Bgrid.fvc
 
 
 ! TIME COMMANDS
